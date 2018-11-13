@@ -1,4 +1,5 @@
-baseURL = "https://miguelsimoni.github.io/hugo-initio-site/"
+# baseURL = "https://miguelsimoni.github.io/hugo-initio-site/"
+baseURL = "https://akherlan.github.io/"
 languageCode = "en-us"
 title = "Andi's Profile"
 theme = "hugo-initio"
@@ -37,7 +38,7 @@ publishDir = "docs"
     weight = 5
 
 [params.disqus]
-    site = "hugo-initio-site.disqus.com"
+    site = "#"
 
 [params.sharethis]
     property = "123456789012345678901234"

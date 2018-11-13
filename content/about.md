@@ -5,14 +5,16 @@ type = "about"
 weight = 10
 +++
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, consequuntur eius repellendus eos aliquid molestiae ea laborum ex quibusdam laudantium voluptates placeat consectetur quam aliquam beatae soluta accusantium iusto nihil nesciunt unde veniam magnam repudiandae sapiente.
+Saya belum bisa menjelaskan lebih jauh tentang diri saya saat ini. Jika Anda bermaksud ingin tahu lebih lanjut mengenai apa yang dapat saya perbuat, maka Anda dapat menghubungi saya melalui kontak yang tertera. Namun, saya dapat menyampaikan sedikit cerita tentang hal-hal yang pernah ingin saya capai dan pikirkan.
 
 ![about](../images/mac.jpg)
 
-### Necessitatibus
+### Ini adalah diri saya sekitar 4 tahun yang lalu
 
-Velit, odit, eius, libero unde impedit quaerat dolorem assumenda alias consequuntur optio quae maiores ratione tempore sit aliquid architecto eligendi pariatur ab soluta doloremque dicta aspernatur labore quibusdam dolore corrupti quod inventore. Maiores, repellat, consequuntur eius repellendus eos aliquid molestiae ea laborum ex quibusdam laudantium voluptates placeat consectetur quam aliquam!
+Saya memperkenalkan diri ke khalayak sebagai seorang mahasiswa teknik. Saya punya cita-cita membangun sebuah perusahaan rintisan (*start-up*). Ingin bekerja di daerah tempat saya dibesarkan sebagai apapun, atau memiliki pekerjaan yang bisa dibawa kemanapun saya pergi. Tentu semua orang ingin itu. Lantas menikah sesegera mungkin agar kelak semangat hidup selalu diperbaharui. Sesederhana itulah di mata dunia. Namun akan indah bila dinikmati oleh hati.
 
-### Fugit, laboriosam
+Mimpi terpendam saya adalah mengunjungi tempat-tempat yang belum pernah saya kunjungi. Mengetahui berbagai bahasa dan budaya, membandingkan pola pikir berbagai kaum, merupakan hal yang dapat membuat saya selalu belajar tentang kehidupan. Senantiasa melakukan “diskusi” dengan segala bentuk ciptaan Tuhan seraya memperbaharui status saya di jejaring sosial milik-Nya, adalah hal yang menurut saya penting untuk selalu diperhatikan. Dengan demikian saya akan merasa sangat kecil dan tak berdaya dalam ilusi yang dibuat-Nya.
 
-Eum, quasi, est, vitae, ipsam nobis consectetur ea aspernatur ad eos voluptatibus fugiat nisi perferendis impedit. Quam, nulla, excepturi, voluptate minus illo tenetur sint ab in culpa cumque impedit quibusdam. Saepe, molestias quia voluptatem natus velit fugiat omnis rem eos sapiente quasi quaerat aspernatur quisquam deleniti accusantium laboriosam odio id?
+Mengenai kegiatan belajar, saya tidak tahu apakah ijazah benar-benar sepenting yang dipikirkan orang-orang. Bagi saya, belajar dari hal-hal yang saya sukai lebih berguna untuk saya pribadi daripada sekadar gelar dan jabatan.
+
+Dengan bekal keingintahuan tentang masa depan, berkeinginan melupakan keburukan di masa lalu, serta berusaha menjalankan sebaik-baiknya masa kini, maka halaman demi halaman dalam weblog ini dibuat. Semoga pembaca menikmatinya.
