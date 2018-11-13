@@ -1,0 +1,104 @@
+baseURL = "https://miguelsimoni.github.io/hugo-initio-site/"
+languageCode = "en-us"
+title = "Andi's Profile"
+theme = "hugo-initio"
+publishDir = "docs"
+
+[params]
+    name = "Andi K. Herlan"
+    description = "Engineer of words"
+    email = "andikh.job@gmail.com"
+    phone = "+234 23 9873237"
+    address = "67C Tugu, Cimanggus, Depok 16951"
+    year = 2018
+    avatar = "images/profile.png"
+    background = ""
+    favicon = "images/gt_favicon.png"
+    DateForm = "January 2, 2006"
+
+    showSubheader = true
+    showServices = true
+    showRecentWorks = true
+    showDownload = true
+    showClients = true
+
+    footerEnableContact = true
+    footerEnableFollowme = true
+    footerEnableTextWidget = true
+    footerEnableFormWidget = false
+
+[[menu.main]]
+    name = "home"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "blog"
+    url = "/post/"
+    weight = 5
+
+[params.disqus]
+    site = "hugo-initio-site.disqus.com"
+
+[params.sharethis]
+    property = "123456789012345678901234"
+    custom = true
+
+[params.google.analytics]
+    trackerID = "GA-000000000-0"
+
+[[params.social]]
+	title = "facebook"
+	url = "https://www.facebook.com/andi.herlan"
+    icon = "fa-facebook-square"
+    footer = true
+    sharethis = true
+    network = "facebook"
+[[params.social]]
+	title = "twitter"
+	url = "https://twitter.com/#"
+    icon = "fa-twitter-square"
+    footer = false
+    sharethis = true
+    network = "twitter"
+[[params.social]]
+	title = "instagram"
+	url = "https://www.instagram.com/chspwn"
+    icon = "fa-instagram"
+    footer = false
+    sharethis = false
+    network = ""
+[[params.social]]
+	title = "google+"
+	url = "https://plus.google.com/+andiherlan"
+    icon = "fa-google-plus-square"
+    footer = false
+    sharethis = true
+    network = "googleplus"
+[[params.social]]
+	title = "linkedin"
+	url = "https://www.linkedin.com/in/andiherlan"
+    icon = "fa-linkedin-square"
+    footer = true
+    sharethis = true
+    network = "linkedin"
+[[params.social]]
+	title = "medium"
+	url = "https://medium.com/@akherlan"
+    icon = "fa-pencil-square"
+    footer = true
+    sharethis = false
+    network = "medium"
+[[params.social]]
+	title = "github"
+	url = "https://github.com/akherlan"
+    icon = "fa-github"
+    footer = true
+    sharethis = false
+    network = ""
+[[params.social]]
+	title = "email"
+	url = "mailto:andikh.job@gmail.com"
+    icon = "fa-envelope"
+    footer = false
+    sharethis = true
+    network = "email"
