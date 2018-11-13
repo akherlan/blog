@@ -1,100 +1,104 @@
 [
     {
         "id": 0,
-        "name": "Sample title - big data solutions",
+        "name": "Membangun Laman Profil Pribadi",
         "image": "images/s1.jpg",
         "url": "#",
         "items": [
             {
-                "name": "Web design",
+                "name": "Kode",
                 "url": "#"
             },
             {
-                "name": "Wordpress",
+                "name": "Menulis",
                 "url": "#"
             },
             {
-                "name": "Logotype",
+                "name": "Desain",
                 "url": "#"
             }
         ]
     },
     {
         "id": 1,
-        "name": "Pure ipsum - development services for people",
+        "name": "Usaha Pakaian",
         "image": "images/s1.jpg",
-        "url": "#",
+        "url": "https://www.instagram/hanbar.clothing",
         "items": [
             {
-                "name": "Web design",
+                "name": "Desain",
                 "url": "#"
             },
             {
-                "name": "Wordpress",
+                "name": "Wirausaha",
                 "url": "#"
             }
         ]
     },
     {
         "id": 2,
-        "name": "Lorem studios - interior and patio design",
+        "name": "Content Writer bersama UMKM",
         "image": "images/s1.jpg",
         "url": "#",
         "items": [
             {
-                "name": "Web design",
+                "name": "Menulis",
                 "url": "#"
             },
             {
-                "name": "Logotype",
+                "name": "Wirausaha",
                 "url": "#"
             }
         ]
     },
     {
         "id": 3,
-        "name": "Pure ipsum - development services for people",
+        "name": "Olah Data Survai",
         "image": "images/s1.jpg",
         "url": "#",
         "items": [
             {
-                "name": "Web design",
+                "name": "Analisis",
                 "url": "#"
             },
             {
-                "name": "Wordpress",
+                "name": "Spreadsheet",
                 "url": "#"
             }
         ]
     },
     {
         "id": 4,
-        "name": "Lorem studios - interior and patio design",
+        "name": "Mengajar",
         "image": "images/s1.jpg",
         "url": "#",
         "items": [
             {
-                "name": "Web design",
+                "name": "Edukasi",
                 "url": "#"
             },
             {
-                "name": "Logotype",
+                "name": "Pengabdian Sosial",
                 "url": "#"
             }
         ]
     },
     {
         "id": 5,
-        "name": "Lorem studios - interior and patio design",
+        "name": "Survai Pembangunan",
         "image": "images/s1.jpg",
         "url": "#",
         "items": [
             {
-                "name": "Web design",
+                "name": "Analisis",
                 "url": "#"
             },
             {
-                "name": "Logotype",
+                "name": "Edukasi",
+                "url": "#"
+            },
+            {
+                "name": "Pengabdian Masyarakat",
                 "url": "#"
             }
         ]
