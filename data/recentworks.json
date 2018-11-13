@@ -6,15 +6,15 @@
         "url": "#",
         "items": [
             {
-                "name": "Kode",
-                "url": "#"
-            },
-            {
                 "name": "Menulis",
                 "url": "#"
             },
             {
-                "name": "Desain",
+                "name": "Kode",
+                "url": "#"
+            },
+            {
+                "name": "Desain Web",
                 "url": "#"
             }
         ]
@@ -37,12 +37,16 @@
     },
     {
         "id": 2,
-        "name": "Content Writer bersama UMKM",
+        "name": "Menulis Content untuk UMKM",
         "image": "images/s1.jpg",
         "url": "#",
         "items": [
             {
                 "name": "Menulis",
+                "url": "#"
+            },
+            {
+                "name": "SEO",
                 "url": "#"
             },
             {
@@ -63,6 +67,10 @@
             },
             {
                 "name": "Spreadsheet",
+                "url": "#"
+            },
+            {
+                "name": "Kontrol Dokumen",
                 "url": "#"
             }
         ]
@@ -85,7 +93,7 @@
     },
     {
         "id": 5,
-        "name": "Survai Pembangunan",
+        "name": "Pengembangan & Pembangunan",
         "image": "images/s1.jpg",
         "url": "#",
         "items": [
