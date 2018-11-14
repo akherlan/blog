@@ -29,7 +29,8 @@
           "url": "images/wisuda.JPG"
         },
         "start_date": {
-          "year": "2013"
+          "year": "2013",
+          "month": "8"
         },
         "end_date": {
           "year": "2017",
@@ -52,21 +53,20 @@
         },
         "text": {
           "headline": "Memiliki Kesempatan untuk Bisa Sekolah Lagi",
-          "text": "<p>Saat ini saya sedang menyelesaikan pendidikan S2 saya, masih di bidang teknik sipil dan Universitas yang sama.</p><p>Penelitian yang saya lakukan adalah mengenai perbandingan data klimatologi, khususnya hujan, antara pengamatan dari bumi dengan pengamatan oleh satelit.</p>"
+          "text": "<p>Saat ini saya sedang menyelesaikan pendidikan S2 saya, masih di bidang teknik sipil dan di perguruan tinggi yang sama.</p><p>Penelitian yang saya lakukan adalah mengenai perbandingan data klimatologi, khususnya hujan, antara pengamatan dari bumi dengan pengamatan oleh satelit.</p>"
         }
       },
       {
         "media": {
-          "url": "https://pbs.twimg.com/profile_images/842577890889949185/UeWG1y3I_400x400.jpg",
-          "caption": "Budi Waluyo, Ph.D., mentor Sekolah TOEFL (saat ini <a href='https://sdsafadg.com' target='_blank'>Learn for Future</a>)",
-          "credit": "twitter/<a href='https://twitter.com/01_budi' target='_blank'>01_budi</a>"
+          "url": "<blockquote class='twitter-tweet data-lang='en'><p lang='in' dir='ltr'>Kalian penasaran nggak sih untuk tahu teknik sukses ala Kak Budi Waluyo <a href='https://twitter.com/01_budi?ref_src=twsrc%5Etfw'>@01_budi</a> pendiri <a href='https://twitter.com/SekolahToefl?ref_src=twsrc%5Etfw'>@SekolahToefl</a>? Yuk simak disini: <a href='https://t.co/cAbgWPFLAR'>https://t.co/cAbgWPFLAR</a> <a href='https://twitter.com/hashtag/SekolahToefl?src=hash&amp;ref_src=twsrc%5Etfw'>#SekolahToefl</a> <a href='https://twitter.com/hashtag/Motivasi?src=hash&amp;ref_src=twsrc%5Etfw'>#Motivasi</a> <a href='https://twitter.com/hashtag/BeasiswaLuarNegeri?src=hash&amp;ref_src=twsrc%5Etfw'>#BeasiswaLuarNegeri</a> # <a href='https://t.co/3uDC3iLUMs'>pic.twitter.com/3uDC3iLUMs</a></p>&mdash; Wijatnika Ika (@Wijatnika45) <a href='https://twitter.com/Wijatnika45/status/1026360262083764224?ref_src=twsrc%5Etfw'>August 6, 2018</a></blockquote><script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script>",
+          "credit": "twitter/<a href='https://twitter.com/Wijatnika45' target='_blank'>wijatnika45</a>"
         },
         "start_date": {
           "year": "2016"
         },
         "text": {
           "headline": "Murid <a href='https://sdsafadg.com' target='_blank'>Sekolah TOEFL</a> Angkatan 4",
-          "text": "<p>Sekolah TOEFL (Saat ini Learn for Future) merupakan wadah bagi siapapun untuk dapat mempelajari TOEFL secara intensif. Dibimbing dan dibina selama beberapa bulan dengan Pak Budi Waluyo, Ph.D. selaku mentornya.</p><p>Saat ini, Sekolah TOEFL telah menggunakan konsep MOOC yang sedang berkembang. Transformasi ini dibuat karena pendaftar yang semakin banyak sehingga perlu ditangani dengan baik.</p>"
+          "text": "<p>Sekolah TOEFL (Saat ini Learn for Future) merupakan wadah bagi siapapun untuk dapat mempelajari TOEFL secara intensif. Saya dibimbing dan dibina selama beberapa bulan oleh Bapak Budi Waluyo, Ph.D. selaku sang mentor.</p><p>Saat ini, Sekolah TOEFL telah menggunakan konsep <a href='http://mooc.org' target='_blank'>MOOC</a> yang sedang banyak berkembang.</p>"
         }
       },
       {
