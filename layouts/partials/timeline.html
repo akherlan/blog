@@ -2,6 +2,8 @@
 
 	<!-- Timeline CSS -->
 	<link title="timeline-styles" rel="stylesheet" href="{{ .Site.BaseURL }}css/timeline.css">
+	<link title="timeline-styles" rel="stylesheet" href="{{ .Site.BaseURL }}css/timeline.css">
+    <link title="timeline-styles" rel="stylesheet" href="{{ .Site.BaseURL }}css/fonts/font.abril-droidsans.css">
 
 	<!-- Timeline JavaScript -->
 	<script src="{{ .Site.BaseURL }}js/timeline.js"></script>
@@ -10,6 +12,11 @@
 
 	<!-- Create Timeline -->
 	<script type="text/javascript">
+		var options = {
+			hash_bookmark: false,
+			start_at_end: false,
+			initial_zoom: 1
+		}
         var timeline = new TL.Timeline('timeline-embed',
-          'https://docs.google.com/spreadsheets/d/1WjKkbZzFOgZUwFMKOZEBvlzCgRk0TceykDCAyr-MI3I/');
+          '{{ .Site.BaseURL }}js/timeline-json.js', options);
 	</script>
