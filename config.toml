@@ -13,7 +13,7 @@ publishDir = "docs"
     year = 2018
     avatar = "images/profile.png"
     background = ""
-    favicon = "gt_favicon.png"
+    favicon = "images/gt_favicon_1.png"
     DateForm = "2 January 2006"
 
     showSubheader = true

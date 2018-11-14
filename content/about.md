@@ -7,9 +7,7 @@ weight = 10
 
 Saya belum bisa menjelaskan lebih jauh tentang diri saya saat ini. Jika Anda bermaksud ingin tahu lebih lanjut mengenai apa yang dapat saya perbuat, maka Anda dapat menghubungi saya melalui kontak yang tertera. Namun, saya dapat menyampaikan sedikit cerita tentang hal-hal yang pernah ingin saya capai dan pikirkan.
 
-![about](../images/mac.jpg)
-
-### Ini adalah diri saya sekitar 4 tahun yang lalu
+### Cerita dari saya 4 tahun yang lalu
 
 Saya memperkenalkan diri ke khalayak sebagai seorang mahasiswa teknik. Saya punya cita-cita membangun sebuah perusahaan rintisan (*start-up*). Ingin bekerja di daerah tempat saya dibesarkan sebagai apapun, atau memiliki pekerjaan yang bisa dibawa kemanapun saya pergi. Tentu semua orang ingin itu. Lantas menikah sesegera mungkin agar kelak semangat hidup selalu diperbaharui. Sesederhana itulah di mata dunia. Namun akan indah bila dinikmati oleh hati.
 

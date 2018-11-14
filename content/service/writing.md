@@ -1,6 +1,5 @@
 +++
 title = "Menulis"
-date = "2018-11-13T12:00:00-00:00"
 +++
 
 Hobi yang membuatmu lupa waktu adalah membaca dan menulis. Keduanya saya lakukan disela-sela waktu luang saya, sehingga seringkali membuat saya keteteran dengan pekerjaan lain. Maka saya jadikan kegiatan baca-tulis sebagai hobi yang dapat menghasilkan. Saat ini, saya menulis di [PenulisAsik.com](https://penulisasik.com/) untuk mendapatkan insentif, selain mengelola blog pribadi di [Medium](https://medium.com/@akherlan).
