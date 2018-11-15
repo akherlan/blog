@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Andi&#39;s Profile</title>
+    <link>https://akherlan.github.io/post/</link>
+    <description>Recent content in Posts on Andi&#39;s Profile</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 18 Sep 2018 12:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://akherlan.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Menginstall R Studio Di Ubuntu</title>
+      <link>https://akherlan.github.io/post/install-r-studio-di-ubuntu/</link>
+      <pubDate>Tue, 18 Sep 2018 12:00:00 +0000</pubDate>
+      
+      <guid>https://akherlan.github.io/post/install-r-studio-di-ubuntu/</guid>
+      <description>Malam ini saya coba menginstall R Studio, yaitu IDE untuk pemrograman R. Ternyata R Studio di GNU/Linux lebih ringan (jauh) dibandingkan dengan R Studio di Windows. Atau mungkin itu cuma perasaan saya saja. Tapi tidak, kelihatannya itu benar. Nanti, kita bisa cari informasi tentang itu. Saat ini saya ingin menuliskan tata cara menginstall R Studio di Ubuntu Bionic saya.
+Pertama yang saya lakukan adalah mengunduh paket *.deb R Studio dari laman resminya.</description>
+    </item>
+    
+    <item>
+      <title>Belajar R Lagi</title>
+      <link>https://akherlan.github.io/post/belajar-r-lagi/</link>
+      <pubDate>Mon, 20 Aug 2018 12:00:00 +0000</pubDate>
+      
+      <guid>https://akherlan.github.io/post/belajar-r-lagi/</guid>
+      <description>Instal Program R Pagi ini saya coba belajar pemrograman R lagi, tapi tanpa bantuan R Studio, murni hanya dengan terminal di laptop Ubuntu saya. Saya memberanikan diri, karena &amp;ldquo;kenapa harus takut?&amp;rdquo;. Hal pertama yang saya lakukan tentu saya memasang paket program R melalui Synaptic Package Manager. Sebenarnya juga bisa dengan cara berikut:
+sudo apt install r-base
+Instal Library R Hal pertama yang saya ingin lakukan setelah instal R adalah mengolah data hujan.</description>
+    </item>
+    
+    <item>
+      <title>Hello World</title>
+      <link>https://akherlan.github.io/post/hello-world/</link>
+      <pubDate>Mon, 16 Apr 2018 12:00:00 +0000</pubDate>
+      
+      <guid>https://akherlan.github.io/post/hello-world/</guid>
+      <description>Well. Ini adalah hari kelahiran blog ini. Tulisan lain bisa dibaca di Medium saya.</description>
+    </item>
+    
+  </channel>
+</rss>
