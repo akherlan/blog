@@ -1,6 +1,6 @@
 <div class="row section recentworks topspace">
 
-    <h2 class="section-title"><span>Pengalaman</span></h2>
+    <h2 class="section-title"><span>Proyek</span></h2>
 
     <div class="thumbnails recentworks">
         {{ range $index, $area := .Site.Data.recentworks }}
@@ -8,7 +8,7 @@
                 <a class="thumbnail" href="{{ .url }}">
                     <span class="img">
                         <img src="{{ .image }}" alt="">
-                        <span class="cover"><span class="more">See details &rarr;</span></span>
+                        <span class="cover"><span class="more">Lihat detail &rarr;</span></span>
                     </span>
                     <span class="title">{{ .name }}</span>
                 </a>
@@ -22,7 +22,5 @@
             </div>
         {{ end }}
     </div>
-    
-{{ partial "timeline.html" . }}
 
 </div> <!-- /section -->

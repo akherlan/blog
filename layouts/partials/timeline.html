@@ -1,14 +1,11 @@
-<div class="row section recentworks topspace">
+<div class="row section timeline topspace">
 
-	<!-- Timeline CSS -->
-	<link title="timeline-styles" rel="stylesheet" href="{{ .Site.BaseURL }}css/timeline.css">
-	<link title="timeline-styles" rel="stylesheet" href="{{ .Site.BaseURL }}css/timeline.css">
-    <link title="timeline-styles" rel="stylesheet" href="{{ .Site.BaseURL }}css/fonts/font.abril-droidsans.css">
+    <h2 class="section-title" id="history"><span>Pengalaman</span></h2>
+
+	<div id='timeline-embed' style="width: 100%; height: 600px"></div>
 
 	<!-- Timeline JavaScript -->
 	<script src="{{ .Site.BaseURL }}js/timeline.js"></script>
-
-	<div id='timeline-embed' style="width: 100%; height: 600px"></div>
 
 	<!-- Create Timeline -->
 	<script type="text/javascript">
@@ -20,3 +17,5 @@
         var timeline = new TL.Timeline('timeline-embed',
           '{{ .Site.BaseURL }}js/timeline-json.js', options);
 	</script>
+
+</div> <!-- / section -->

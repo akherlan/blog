@@ -5,8 +5,8 @@
 			<div class="col-md-3 widget">
 				<h3 class="widget-title">Hubungi Saya</h3>
 				<div class="widget-body">
-					<p>{{ .Site.Params.phone }}<br>
-						<a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a><br>
+					<p>Melalui <a href="{{ .Site.Params.phone }}">Telegram</i> </a> atau<br>
+						dengan <a href="mailto:{{ .Site.Params.email }}">mengirim email</a><br>
 						<br>
 						{{ .Site.Params.address }}
 					</p>
@@ -31,7 +31,7 @@
 
 			{{ if .Site.Params.footerEnableTextWidget }}
 			<div class="col-md-3 widget">
-				<h3 class="widget-title">Terima Kasih</h3>
+				<h3 class="widget-title">Keep in Touch</h3>
 				<div class="widget-body">
 					<p>Terima kasih telah berkunjung dan menyempatkan diri untuk membaca sebagian hidup saya. Semoga sukses!</p>
 				</div>
@@ -82,6 +82,7 @@
 
 
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="{{ .Site.BaseURL }}js/template.js"></script>

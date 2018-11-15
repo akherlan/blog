@@ -65,8 +65,8 @@
           "year": "2016"
         },
         "text": {
-          "headline": "Murid <a href='https://sdsafadg.com' target='_blank'>Sekolah TOEFL</a> Angkatan 4",
-          "text": "<p>Sekolah TOEFL (Saat ini Learn for Future) merupakan wadah bagi siapapun untuk dapat mempelajari TOEFL secara intensif. Saya dibimbing dan dibina selama beberapa bulan oleh Bapak Budi Waluyo, Ph.D. selaku sang mentor.</p><p>Saat ini, Sekolah TOEFL telah menggunakan konsep <a href='http://mooc.org' target='_blank'>MOOC</a> yang sedang banyak berkembang.</p>"
+          "headline": "Murid <a href='https://sdsafadg.com' target='_blank'>Sekolah TOEFL</a>",
+          "text": "<p>Sekolah TOEFL (Saat ini Learn for Future) merupakan wadah bagi siapapun untuk dapat mempelajari TOEFL secara intensif. Saya dibimbing dan dibina selama beberapa bulan oleh Bapak Budi Waluyo, Ph.D. selaku sang mentor.</p>"
         }
       },
       {

@@ -8,8 +8,8 @@ publishDir = "docs"
     name = "Andi K. Herlan"
     description = "Engineer of words"
     email = "andikh.job@gmail.com"
-    phone = "+234 23 9873237"
-    address = "67C Tugu, Cimanggis, Depok 16951"
+    phone = "https://t.me/akherlan"
+    address = "@67C Tugu, Cimanggis, Depok 16951"
     year = 2018
     avatar = "images/profile.png"
     background = ""
@@ -18,9 +18,10 @@ publishDir = "docs"
 
     showSubheader = true
     showServices = true
+    showTimeline = true
     showRecentWorks = true
-    showDownload = true
-    showClients = true
+    showDownload = false
+    showClients = false
 
     footerEnableContact = true
     footerEnableFollowme = true
