@@ -12,14 +12,14 @@ publishDir = "docs"
     address = "@67C Tugu, Cimanggis, Depok 16951"
     year = 2018
     avatar = "images/profile.png"
-    background = ""
+    background = "images/bg_head.png"
     favicon = "images/gt_favicon_1.png"
     DateForm = "2 January 2006"
 
     showSubheader = true
     showServices = true
     showTimeline = true
-    showRecentWorks = true
+    showRecentWorks = false
     showDownload = false
     showClients = false
 

@@ -12,7 +12,7 @@
     "events": [
       {
         "media": {
-          "url": "images/profile.png",
+          "url": "https://www.google.com/maps/place/Nanga+Pinoh,+Melawi+Regency,+West+Kalimantan/@-0.4420003,111.661038,6.46z/data=!4m5!3m4!1s0x2e01b45c36bfc0b3:0xbc9a0c056a1cdd5a!8m2!3d-0.3656789!4d111.7376178",
           "caption": ""
         },
         "start_date": {
@@ -88,11 +88,11 @@
       },
       {
         "media": {
-          "url": "images/pimpinan_hiama.png",
+          "url": "images/hiama/pimpinan.png",
           "caption": "HIAMA, Depok"
         },
         "background": {
-          "url": "images/hiama.png"
+          "url": "images/hiama/gedung.png"
         },
         "start_date": {
           "month": "9",
@@ -105,6 +105,44 @@
         "text": {
           "headline": "Membantu Siswa dalam Belajar",
           "text": "<p>Bersama <a href='https://hiama.com/homeschooling/' target='_blank'>HIAMA</a> Home Schooling, saya sempat merasakan dan menyadari bahwa belajar, dalam konteks apapun itu, tidak akan pernah bisa dihentikan atau berhenti.</p><p>Saya pernah membantu adik-adik siswa SMP dan SMA untuk mengembangkan bakat dan kemampuan mereka dalam sains dan matematika.</p>"
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": "Foto bersama usai kegiatan English Camp bersama Depok Lingua."
+        },
+        "background": {
+          "url": "images/dling.jpg"
+        },
+        "start_date": {
+          "year": "2015",
+          "month": "2"
+        },
+        "end_date": {
+          "year": "2017",
+          "month": "5"
+        },
+        "text": {
+          "headline": "Belajar Bahasa Bersama Komunitas",
+          "text": "<p>Untuk melatih kemampuan berbahasa asing dan berbicara, saya ikut belajar bersama <b>Depok Lingua</b>, sebuah komunitas bahasa dan budaya di Kota Depok.</p><p>English Camp merupakan salah satu kegiatan yang rutin diselenggarakan. Melalui kegiatan ini, saya dilatih untuk bisa berbicara dalam Bahasa Inggris secara aktif selama kegiatan berlangsung.</p>"
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "background": {
+          "url": "images/penulisasik.png"
+        },
+        "start_date": {
+          "month": "10",
+          "year": "2018"
+        },
+        "text": {
+          "headline": "Bergabung dengan Tim Penulis",
+          "text": "<p>Bersama <a href='https://penulisasik.com/' target='_blank'>PenulisAsik.com</a> saya mencoba untuk turut serta membangun ekonomi Indonesia, dengan jalan menaikkan daya saing para pengusaha kecil dan menengah dalam memasarkan produk-produk mereka secara <i>online</i>.</p><p>"
         }
       }
     ]

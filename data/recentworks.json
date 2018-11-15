@@ -2,8 +2,8 @@
     {
         "id": 0,
         "name": "Membangun Laman Profil Pribadi",
-        "image": "images/s1.jpg",
-        "url": "#",
+        "image": "images/desain-web.png",
+        "url": "https://github.com/akherlan/akherlan.github.io",
         "items": [
             {
                 "name": "Menulis",
@@ -22,8 +22,8 @@
     {
         "id": 1,
         "name": "Usaha Pakaian",
-        "image": "images/s1.jpg",
-        "url": "https://www.instagram/hanbar.clothing",
+        "image": "images/hanbar/img1.jpg",
+        "url": "https://www.instagram.com/hanbar.clothing",
         "items": [
             {
                 "name": "Desain",
@@ -38,7 +38,7 @@
     {
         "id": 2,
         "name": "Menulis Content untuk UMKM",
-        "image": "images/s1.jpg",
+        "image": "images/penulisasik.png",
         "url": "#",
         "items": [
             {
@@ -58,7 +58,7 @@
     {
         "id": 3,
         "name": "Olah Data Survai",
-        "image": "images/s1.jpg",
+        "image": "images/bg_head.png",
         "url": "#",
         "items": [
             {
@@ -78,7 +78,7 @@
     {
         "id": 4,
         "name": "Mengajar",
-        "image": "images/s1.jpg",
+        "image": "images/hiama/hiama.jpg",
         "url": "#",
         "items": [
             {
