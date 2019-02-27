@@ -1,3 +1,9 @@
 [submodule "themes/hugo-initio"]
 	path = themes/hugo-initio
 	url = https://github.com/miguelsimoni/hugo-initio.git
+[submodule "themes/hugo-finite"]
+	path = themes/hugo-finite
+	url = https://github.com/lambdafu/hugo-finite.git
+[submodule "themes/tale-hugo"]
+	path = themes/tale-hugo
+	url = https://github.com/EmielH/tale-hugo.git

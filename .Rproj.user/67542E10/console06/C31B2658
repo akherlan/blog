@@ -1,0 +1,31 @@
+]0;/home/chspwn/R/site1]0;chspwn@universe: ~/R/site1[01;32mchspwn@universe[00m:[01;34m~/R/site1[00m$ [K]0;chspwn@universe: ~/R/site1[01;32mchspwn@universe[00m:[01;34m~/R/site1[00m$ cp [K[K[Kls
+config.toml  [0m[01;34mcontent[0m  index.Rmd  [01;34mpublic[0m  site1.Rproj  [01;34mstatic[0m  [01;34mthemes[0m
+]0;/home/chspwn/R/site1]0;chspwn@universe: ~/R/site1[01;32mchspwn@universe[00m:[01;34m~/R/site1[00m$ cp themes/hugo-lithium/layouts/ layouts/
+cp: -r not specified; omitting directory 'themes/hugo-lithium/layouts/'
+]0;/home/chspwn/R/site1]0;chspwn@universe: ~/R/site1[01;32mchspwn@universe[00m:[01;34m~/R/site1[00m$ ls
+config.toml  [0m[01;34mcontent[0m  index.Rmd  [01;34mpublic[0m  site1.Rproj  [01;34mstatic[0m  [01;34mthemes[0m
+]0;/home/chspwn/R/site1]0;chspwn@universe: ~/R/site1[01;32mchspwn@universe[00m:[01;34m~/R/site1[00m$ lscp themes/hugo-lithium/layouts/ layouts/[C* layouts/[C[C[C[C[C[C[C[C[C*
+cp: target 'layouts/*' is not a directory
+]0;/home/chspwn/R/site1]0;chspwn@universe: ~/R/site1[01;32mchspwn@universe[00m:[01;34m~/R/site1[00m$ mkdir layoute[Ks
+]0;/home/chspwn/R/site1]0;chspwn@universe: ~/R/site1[01;32mchspwn@universe[00m:[01;34m~/R/site1[00m$ mkdir layoutscp themes/hugo-lithium/layouts/* layouts/*
+cp: target 'layouts/*' is not a directory
+]0;/home/chspwn/R/site1]0;chspwn@universe: ~/R/site1[01;32mchspwn@universe[00m:[01;34m~/R/site1[00m$ ls
+config.toml  [0m[01;34mcontent[0m  index.Rmd  [01;34mlayouts[0m  [01;34mpublic[0m  site1.Rproj  [01;34mstatic[0m  [01;34mthemes[0m
+]0;/home/chspwn/R/site1]0;chspwn@universe: ~/R/site1[01;32mchspwn@universe[00m:[01;34m~/R/site1[00m$ lscp themes/hugo-lithium/layouts/* layouts/*~layouts/*/layouts/*Rlayouts/*/layouts/*slayouts/*ilayouts/*tlayouts/*elayouts/*1layouts/*/layouts/*[C[C[C[C[C[C[C[C[C
+cp: target '/home/chspwn/R/site1/layouts/*' is not a directory
+]0;/home/chspwn/R/site1]0;chspwn@universe: ~/R/site1[01;32mchspwn@universe[00m:[01;34m~/R/site1[00m$ cp themes/hugo-lithium/layouts/* ~/R/site1/layouts/*[K
+cp: -r not specified; omitting directory 'themes/hugo-lithium/layouts/_default'
+cp: -r not specified; omitting directory 'themes/hugo-lithium/layouts/partials'
+]0;/home/chspwn/R/site1]0;chspwn@universe: ~/R/site1[01;32mchspwn@universe[00m:[01;34m~/R/site1[00m$ cp [K[K[Kcp themes/hugo-lithium/layouts/* ~/R/site1/layouts/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P ~/R/site1/layouts/[C[C[C[C[C[C[C[C* ~/R/site1/layouts/[1@-[1@r[1@ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+]0;/home/chspwn/R/site1]0;chspwn@universe: ~/R/site1[01;32mchspwn@universe[00m:[01;34m~/R/site1[00m$ cd layouts/
+]0;/home/chspwn/R/site1/layouts]0;chspwn@universe: ~/R/site1/layouts[01;32mchspwn@universe[00m:[01;34m~/R/site1/layouts[00m$ ls
+[0m[01;34m_default[0m  [01;34mpartials[0m
+]0;/home/chspwn/R/site1/layouts]0;chspwn@universe: ~/R/site1/layouts[01;32mchspwn@universe[00m:[01;34m~/R/site1/layouts[00m$ cd _default/
+]0;/home/chspwn/R/site1/layouts/_default]0;chspwn@universe: ~/R/site1/layouts/_default[01;32mchspwn@universe[00m:[01;34m~/R/site1/layouts/_default[00m$ ls
+list.html  single.html
+]0;/home/chspwn/R/site1/layouts/_default]0;chspwn@universe: ~/R/site1/layouts/_default[01;32mchspwn@universe[00m:[01;34m~/R/site1/layouts/_default[00m$ cd ..
+]0;/home/chspwn/R/site1/layouts]0;chspwn@universe: ~/R/site1/layouts[01;32mchspwn@universe[00m:[01;34m~/R/site1/layouts[00m$ cd[Kp [K[Kd partials/
+]0;/home/chspwn/R/site1/layouts/partials]0;chspwn@universe: ~/R/site1/layouts/partials[01;32mchspwn@universe[00m:[01;34m~/R/site1/layouts/partials[00m$ ls
+disqus.html              footer.html          head_custom.html  head_highlightjs.html  nav.html
+footer_highlightjs.html  footer_mathjax.html  header.html       head.html
+]0;/home/chspwn/R/site1/layouts/partials]0;chspwn@universe: ~/R/site1/layouts/partials[01;32mchspwn@universe[00m:[01;34m~/R/site1/layouts/partials[00m$ 
