@@ -1,6 +1,6 @@
 ---
 title: "About: Cerita Saya Di Sekitar 2016"
-date: "2016-05-05T21:48:51-07:00"
+date: "2016-05-05"
 ---
 
 Saya memperkenalkan diri kepada khalayak sebagai seorang [mahasiswa teknik](https://medium.com/efekrumahbaca/kalkulasi-hidup-b478a8236ebc). Saya punya cita-cita membangun sebuah perusahaan rintisan (*start-up*). Ingin bekerja di daerah tempat saya dibesarkan sebagai apapun, atau memiliki pekerjaan yang bisa dibawa kemanapun saat saya ingin pindah atau pergi. Beberapa orang mungkin ingin seperti itu, tetapi sebagian tidak. Kemudian dapat menikah sesegera mungkin agar kelak semangat hidup selalu dapat diperbaharui. Sesederhana itulah di mata dunia.
