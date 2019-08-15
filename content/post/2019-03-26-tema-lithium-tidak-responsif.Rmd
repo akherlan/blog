@@ -1,12 +1,10 @@
 ---
-title: Tema Hugo Lithium Tidak Responsif
-author: andikh
+title: "Tema Hugo Lithium Tidak Responsif"
+author: "andikh"
 date: '2019-03-26'
 slug: tema-hugo-lithium-tidak-responsif
-categories:
-  - belajar
-tags:
-  - website
+tags: website
+categories: belajar
 ---
 
 Ini merupakan tulisan dokumentasi saya untuk permasalahan tema Lithium yang tidak responsif (saat hari ini saya gunakan). Ukuran gambar tidak menyesuaikan ukuran layar. Sangat fatal ketika dibuka dari ponsel, mengingat sebagian besar akses internet hari ini adalah melalui ponsel. Alamak!

@@ -4,7 +4,7 @@ author: andikh
 date: '2018-09-18'
 slug: install-r-studio-ubuntu
 categories: [belajar]
-tags: [R]
+tags: [rstats]
 ---
 
 Malam ini saya coba menginstall R Studio, yaitu IDE untuk pemrograman R. Ternyata R Studio di GNU/Linux lebih ringan (jauh) dibandingkan dengan R Studio di Windows. Atau mungkin itu cuma perasaan saya saja. Tapi tidak, kelihatannya itu benar. Nanti, kita bisa cari informasi tentang itu. Saat ini saya ingin menuliskan tata cara menginstall R Studio di **Ubuntu Bionic** saya.

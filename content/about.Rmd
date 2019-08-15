@@ -17,4 +17,6 @@ Dengan bekal keingintahuan tentang masa depan, berkeinginan melupakan keburukan 
 
 ---
 
-*Blog ini dibuat menggunakan paket* [***blogdown***](https://github.com/rstudio/blogdown) *di RStudio. Tema blog berasal dari* [*@jrutheiser/hugo-lithium-theme*](https://github.com/jrutheiser/hugo-lithium-theme) *dan telah dimodifikasi oleh* [*Yihui Xie*](https://github.com/yihui/hugo-lithium)*, lalu saya sesuaikan*.
+*Blog ini tersimpan di* [*Github*](https://github.com/akherlan/blog)*. Dibuat menggunakan paket* [*`blogdown`*](https://github.com/rstudio/blogdown) *di RStudio, dengan tema* [*Hugo Lithium*](https://github.com/jrutheiser/hugo-lithium-theme) *yang telah dimodifikasi oleh* [*Yihui Xie*](https://github.com/yihui/hugo-lithium)*, lalu* [*saya*](https://t.me/akherlan) *sesuaikan.*
+
+*Seluruh konten berada di bawah Lisensi* [***CC BY-SA 4.0***](https://creativecommons.org/licenses/by-sa/4.0/deed.id)*.*

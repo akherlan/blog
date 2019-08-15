@@ -4,7 +4,7 @@ author: andikh
 date: '2018-08-20'
 slug: belajar-r-lagi
 categories: [belajar]
-tags: ["R", "program"]
+tags: ["rstats", "program"]
 ---
 
 ## Instal Program R

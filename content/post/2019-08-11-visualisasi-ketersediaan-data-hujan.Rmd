@@ -6,7 +6,7 @@ slug: visualisasi-ketersediaan-data-hujan
 tags:
 - hidrologi
 - hujan
-- R
+- rstats
 categories: belajar
 ---
 
