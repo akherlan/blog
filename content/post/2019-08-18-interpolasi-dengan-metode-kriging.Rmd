@@ -1,0 +1,283 @@
+---
+title: Interpolasi dengan Metode Kriging
+author: Andi
+date: '2019-08-18'
+slug: interpolasi-dengan-metode-kriging
+categories:
+  - belajar
+tags:
+  - rstats
+---
+
+*Belajar interpolasi spasial menggunakan R*
+
+## Latar Belakang, Kasus, dan Tujuan
+
+Katakanlah kita ingin mengetahui bagaimana kualitas udara di atas suatu wilayah. Untuk mengetahuinya kita menggunakan alat pengukur tingkat polusi.
+
+Peralatan untuk mengukur kualitas udara ini ditempatkan di beberapa titik dalam wilayah tersebut. Ada di titik A, titik B, titik C, dan seterusnya.
+
+Tetapi yang ingin kita lihat adalah kualitas udara secara keseluruhan di atas wilayah ini, misalnya lewat peta karena akan lebih mudah melihatnya.
+
+Yang bisa kita lakukan adalah memplotkan nilai kualitas udara di masing-masing titik tersampel (menampilkan data diskrit) hanya di titik-titik teramati. Atau dengan cara yang lebih OK.
+
+Cara OK itu adalah dengan melakukan interpolasi antar titik-titik tersampel untuk mendapatkan peta dengan nilai kualitas udara yang kontinyu di seluruh wilayah yang diamati. Dengan kata lain, titik-titik yang tidak tersampel ikut diberi nilai pada peta dengan nilai prediksi.
+
+Kali ini kita akan mempraktikkan cara-cara yang sudah diberikan di web [rspatial.org](https://rspatial.org/analysis/4-interpolation.html)^[[rspatial.org](https://rspatial.org) merupakan web berisi materi belajar mengenai analisis data spasial dan pemodelannya menggunakan R.] tentang bagaimana caranya melakukan interpolasi dengan metode Kriging menggunakan beberapa *library* dari R.
+
+Namun sebelumnya, mari kenali dahulu apa yang dimaksud dengan metode interpolasi Kriging.
+
+## Metode yang digunakan: Kriging
+
+Kriging merupakan metode prediksi spasial dengan pendekatan statistika. Namun pada tulisan ini saya hanya akan menjelaskan langkah-langkah melakukan interpolasinya saja. Jika teman-teman berminat ingin mempelajari teori Kriging lebih detail dan mendalam, sementara teman-teman bisa mengunjungi [catatan Mr. Gimond](https://mgimond.github.io/Spatial/spatial-interpolation.html#ordinary-kriging)tentang interpolasi Kriging sebagai referensi atau *googling*.
+
+## Apa yang Kita Butuhkan? (Peralatan)
+
+Pada praktik ini, kita membutuhkan R dan RStudio terpasang di komputer atau laptop kita. Juga jangan ketinggalan: koneksi internet hehe... Untuk menguduh dan memasang paket-paket *library* berikut: `rspatial`, `sp`, `rgdal`, dan `gstat` (kalau belum punya).
+
+Memuat semua *library* yang dibutuhkan:
+
+```{r library required, message=FALSE, warning=FALSE, paged.print=FALSE}
+library("rspatial")    # menyediakan sampel data
+library("sp")          # untuk olah berkas polygonal/vector
+library("rgdal")       # untuk olah berkas raster/bitmap
+library("gstat")       # olah data metode Kriging
+```
+
+## Persiapan Data (Bahan-bahan)
+
+Data yang kita gunakan adalah sampel **data kualitas udara** yang sudah disediakan dalam paket `rspatial`^[Data `airqual` berasal dari [California Air Resouces Board](https://ww2.arb.ca.gov/).]. Cara mengambil data itu adalah dengan perintah berikut:
+
+```{r}
+x <- sp_data("airqual")  # memuat sampel data polusi
+```
+
+Data kualitas udara `airqual` kita definisikan sebagai objek `x`. Kalau mau, teman-teman bisa mengganti `x` dengan "`kabutku`" atau "`aduh.asap`" tapi ... OK, skip.
+
+Jika dilihat lebih lanjut, kelas datanya merupakan `data.frame` yang umum digunakan untuk data yang disimpan dalam bentuk tabel.
+
+```{r paged.print=FALSE}
+# melihat kelas data
+class(x)
+# melihat 5 rekaman data teratas, hanya kolom 3-7
+tibble::as_tibble(head(x[, 3:7], 5))
+```
+
+Pada kolom 3 hingga 7 kita bisa lihat, ada data nama-nama lokasi (SHORT_NAME) berupa *character*, data koordinat (LATITUDE, LONGITUDE) berupa data *numeric* atau *double*, juga data sampel CH~4~ maksimum per jam (CH4MAX1H) serta sampel CH~4~ rata-rata harian (CH4DLYAV), keduanya juga *double*.
+
+Sebenarnya masih ada 32 kolom lainnya yang tidak kita munculkan, teman-teman bisa mencoba-coba sendiri untuk melihat datanya dengan perintah `View(x)` di bagian *console* RStudio atau klik-klik seperti ini.
+
+![Melihat tabel di RStudio sebenarnya tinggal klik! haha](/post/2019-08-18-interpolasi-dengan-metode-kriging_files/dataframe-view-rstudio.gif)
+
+Kali ini kita tidak akan menggunakan data CH~4~. Kita akan gunakan data level ozon harian rata-rata **OZDLYAV**. Nilai data ini adalah *parts per billion*^[Kalau pembaca mengetahui maksud *parts per billion* dan bersedia untuk bantu mengoreksi, mohon [kontak](https://t.me/akherlan) penulis.], sehingga untuk memudahkan dalam membacanya kita akan kalikan 1000.
+
+```{r}
+# lihat dulu datanya
+head(x$OZDLYAV)
+
+# mengalikan nilai OZDLYAV dengan 1000
+x$OZDLYAV <- x$OZDLYAV * 1000
+
+# lihat lagi, berbedakah?
+head(x$OZDLYAV)
+```
+
+Setelah ini kita akan memanipulasi format data agar nantinya bisa diolah dengan menggunakan paket `gstat`.
+
+### Re-formatting data
+
+#### Data titik yang memiliki nilai LONGITUDE, LATITUDE, dan OZDLYAV
+
+Membuat `x` jadi data titik spasial (*SpatialPoint*) dengan menambahkan koordinat padanya, nilainya diambil dari LONGITUDE dan LATITUDE.
+
+```{r}
+coordinates(x) <- ~LONGITUDE + LATITUDE
+```
+
+Menambahkan sistem referensi koordinat (*coordinate reference system* - CRS). Sebagai *template* saja, nanti akan diganti dengan CRS lain.
+
+```{r}
+proj4string(x) <- CRS('+proj=longlat +datum=NAD83')
+```
+
+Membuat nilai CRS baru dengan nama `TA`. Bagian `+units=km` akan berguna untuk membuat grid peta dan semivariance nanti.
+
+```{r}
+TA <- CRS("+proj=aea +lat_1=34 +lat_2=40.5
+          +lat_0=0 +lon_0=-120 +x_0=0 +y_0=-4000000
+          +datum=NAD83 +units=km +ellps=GRS80")
+```
+
+Membuat objek `aq` (akronim *air quality*) yang berisi data titik spasial `x` namun dengan CRS yang nilainya sudah kita simpan dalam `TA` tadi.
+
+```{r}
+aq <- spTransform(x, TA)
+plot(aq, pch=20, cex=1)
+```
+
+Belum kelihatan nilainya, ya? Masih seragam bentuknya. Karena memang yang diplot hanya nilai koordinat LONGITUDE, LATITUDE. Mari plotkan nilainya sekalian.
+
+```{r}
+# Membuat palet warnanya
+cuts <- c(0, 25, 30, 50, 80, 100)
+blues <- colorRampPalette(c('yellow', 'orange', 'blue', 'dark blue'))
+
+# Plot dengan warna sebagai nilai
+spplot(aq, 'OZDLYAV', cuts=cuts, col.regions=blues(5), pch=20, cex=1)
+```
+
+
+#### Data batas administrasi negara bagian (California/CA)
+
+Mengambil sampel data peta negara bagian dari paket `rspatial`, peta polygon shp (*SpatialPolygon*).
+
+```{r}
+cageo <- sp_data('counties.rds')
+```
+
+Transformasikan CRS peta ke CRS yang juga diterapkan pada data ozon *SpatialPoint*. Beri nama objek peta `ca` (akronim dari California).
+
+```{r}
+ca <- spTransform(cageo, TA)
+plot(ca)
+```
+
+#### Membuat template raster untuk interpolasi
+
+Konversi polygon ke raster sebagai *template* raster layer-nya.
+
+```{r}
+r <- raster(ca)
+```
+
+Coba kita cek bagian dimensions dan resolution.
+
+```{r}
+r$layer
+```
+
+Set resolusi ke 10 km (satuan sudah ditentukan dengan `+units=km` saat membuat CRS `TA`).
+
+```{r}
+res(r) <- 10
+
+# Melihat perbedaannya
+r$layer
+```
+
+Konversi `r` menjadi data spasial grid bernama `g`.
+
+```{r}
+g <- as(r, 'SpatialGrid')
+plot(g)
+```
+
+Sekarang, bahan-bahan sudah siap dengan formatnya masing-masing. Waktunya untuk mengolah data tersebut.
+
+## Pengolahan Data
+
+### Menghitung nilai semivariance
+
+Bikin objek `gs` berisi formula regresi untuk "naturalisasi" atau "netralisasi".
+
+```{r}
+gs <- gstat(formula=OZDLYAV~1, locations=aq)
+class(gs)
+```
+
+Hitung sampel variogram. Bagian ini masih harus saya pelajari lagi, bagaimana fungsi R ini bisa bekerja sesuai dengan teori Kriging. Barangkali kalau ada waktu akan saya perbarui tulisan ini.
+
+```{r}
+v <- variogram(gs, width=20) # generate variogram
+class(v)                     # data.frame sih, tapi...
+str(v)  # melihat struktur data
+head(v) # dilihat sekilas memang data.frame biasa
+```
+
+Komponen grafik semivariogram:
+
+1. **dist** merupakan singkatan *distances*, jarak. Sumbu x.
+2. **gamma** adalah *semivariance* ($\gamma$). Sumbu y.
+
+```{r}
+plot(v) # plot nilai dist vs. gamma 
+```
+
+### Fitting semivariogram empiris dengan model
+
+*Fitting*, bahasa lainnya "*ngepasin*", yakni memilih model grafik semivarians teori yang mendekati bentuk semivariogram empiris, dari hasil data pengamatan.
+
+Bermacam istilah dan komponen pada grafik:
+
+1. `nug` adalah *nugget* 
+2. `psill` adalah *sill*
+3. `range` adalah *range*
+
+![Nugget, range, dan sill (Sumber: [gisgeography.com](https://gisgeography.com/wp-content/uploads/2016/10/Variogram-Nugget-Range-Sill.png))](/post/2019-08-18-interpolasi-dengan-metode-kriging_files/variogram-nugget-range-sill.png)
+
+Nilai-nilai yang coba dimasukkan diantaranya `psill = 85`, `range = 75`, `nugget = 20`, serta menggunakan model exponensial (`"Exp"`).
+
+Nilai-nilai ini ditentukan dengan mengamati batas-batas pada saat memplot grafik `v` di atas.
+
+```{r}
+fve <- fit.variogram(v, vgm(85, "Exp", 75, 20))
+str(fve)  # lihat struktur data
+fve       # lihat hasil parameter modelnya
+```
+
+Plot semivariogram model (garis) bersama dengan semivariogram empiris (titik).
+
+```{r}
+plot(variogramLine(fve, 400), type='l', ylim=c(0,120))
+points(v[,2:3], pch=20, col='red')
+```
+
+*Fitting* menggunakan model grafik lain yakni model spherical.
+
+```{r}
+# Parameternya sama, cuma ganti model
+fvs <- fit.variogram(v, vgm(85, "Sph", 75, 20))
+fvs
+
+# Plot grafik
+plot(variogramLine(fvs, 400), type='l', ylim=c(0,120) ,col='blue', lwd=2)
+points(v[,2:3], pch=20, col='red')
+```
+
+Plot grafik bagusnya.
+
+```{r}
+plot(v, fve)
+```
+
+Hhmmm.... Tadi kita baru bikin semivariance. Sekarang mari kita buat interpolasinya.
+
+### Plot hasil interpolasi
+
+Kita akan menggunakan yang `fve` (model exponensial) untuk interpolasi.
+
+```{r}
+k <- gstat(formula=OZDLYAV~1, locations=aq, model=fve)
+```
+
+#### Nilai prediksi
+
+```{r message=FALSE, warning=FALSE}
+kp <- predict(k, g) # ordinary kriging
+spplot(kp)
+```
+
+#### Variance
+
+PR untuk saya adalah menjelaskan lebih lanjut tentang apa itu variance dan prediksi.
+
+```{r}
+ok <- brick(kp)
+ok <- mask(ok, ca)
+names(ok) <- c('prediksi', 'variance')
+plot(ok)
+```
+
+Sekian dulu, yah. Nanti dilanjut.
+
+Semoga bermanfaat!
