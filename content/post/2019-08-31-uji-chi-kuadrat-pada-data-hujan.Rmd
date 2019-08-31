@@ -20,9 +20,9 @@ Mau ngasih tau langkah-langkah pengujian Chi-Square pakai R untuk analisis data 
 
 Kali ini saya akan melakukan pengujian **Chi-Square** atau **Khi-Kuadrat** ([kata Wikipedia](https://id.wikipedia.org/wiki/Distribusi_khi-kuadrat)) pada data curah hujan Samarinda. Bacanya *khay* bukan *chiy*!
 
-Pengujian ini termasuk analisis uji kecocokan sebaran, yaitu *the goodness of fittest test* ([oppo iku?](https://www.google.com/search?safe=strict&source=hp&ei=VTpqXb2MGJzAz7sPt8mR6Ao&q=the+goodness+of+fit+test)). Dipakai untuk menguji kecocokan distribusi frekuensi sampel data terhadap fungsi distribusi peluang yang diperkirakan dapat menggambarkan atau mewakili distribusi frekuensi tersebut (rumitnya bahasa copas).
+Pengujian ini termasuk analisis uji kecocokan sebaran, yaitu *goodness of fit test* ([oppo iku?](https://www.google.com/search?safe=strict&source=hp&ei=VTpqXb2MGJzAz7sPt8mR6Ao&q=the+goodness+of+fit+test)). Dipakai untuk menguji kecocokan distribusi frekuensi sampel data terhadap fungsi distribusi peluang yang diperkirakan dapat menggambarkan atau mewakili distribusi frekuensi tersebut (rumitnya bahasa copas).
 
-Gampangnya? Kenapa ada uji Chi-Kuadrat ($\chi^2$)?
+Gampangnya gimana? Kenapa perlu ada uji Chi-Kuadrat $(\chi^2)$?
 
 Maksud dari pengujian ini adalah untuk menentukan persamaan distribusi yang akan dipilih nanti, apakah bisa mewakili distribusi statistik sampel data yang dianalisis atau tidak.
 
@@ -32,11 +32,13 @@ Nanti kita belajar yang itu juga, insyaAllah...
 
 ### Syarat
 
-Analisis bisa diterima kalau nilai Chi-Kuadrat yang kita hitung kurang dari Chi-Kuadrat Kritis ($\chi_{h}^2 < \chi_{cr}^2$). Nilai kritis itu diperoleh dari tabel.
+Analisis bisa diterima kalau nilai Chi-Kuadrat yang kita hitung kurang dari Chi-Kuadrat Kritis $(\chi_{h}^2 < \chi_{cr}^2)$. Nilai kritis itu diperoleh dari tabel, atau melalui fungsi yang disediakan oleh R. Hhm... menarik.
 
 ## Sumber Data
 
 Saya dapat data hujan ini dari seorang teman yang tinggal di Samarinda. Dia ambil bidang peminatan studi yang sama dengan saya. Jadi, dia juga ngolah data hujan gitu, seperti saya. Dan dia dapat data ini dari mana? Pasti dari instansi penyedia data meteorologi setempat (saya menerka).
+
+**Data adalah curah hujan maksimum tahunan.**
 
 Data ini sudah saya rapikan dan disimpan dalam format `csv` agar teman-teman bisa langsung ikut mempraktikan apa yang saya tulis di sini.
 
@@ -103,7 +105,7 @@ akhir
 
 Sampai di sini, kita sudah tahu bahwa nanti kita buat data jadi enam kelompok. Batas awal 53.01 dan batas akhir 139.29 dengan interval 14.38.
 
-Setelah ditentukan batas-batas dan interval data, sekarang kita bisa mendefinisikan data ke dalam masing-masing kelompoknya, yang ada enam itu.
+Setelah ditentukan batas-batas dan interval data, sekarang kita bisa mendistribusikan data ke dalam masing-masing kelompoknya, yang ada enam itu.
 
 Misal, kalau ada rentang data 0-10, kita buat jadi 5 kelompok dengan interval 2. Maka nilai 9 akan kita masukkan ke kelompok data 8-10, bukan kelompok data 4-6, dan dihitung 1. Kalau ada nilai 10. Kita masukkan lagi ke kelompok 8-10. Jadi sekarang ada 2 frekuensinya. Begitu juga dengan nilai lain.
 
@@ -135,26 +137,34 @@ chisq <- chisq.test(dist.freq)
 chisq
 ```
 
-Ketika membandingkan $\chi_{h}^2$ dengan $\chi_{cr}^2$ sesungguhnya saya mengalami kebingunan. Ada dua versi.
+Ketika membandingkan $\chi_{h}^2$ dengan $\chi_{cr}^2$ sesungguhnya saya mengalami kebingungan. Ada dua versi...
 
-### Versi pertama^[Dari pernyataan dalam halaman web [Sciencing.com](https://sciencing.com/info-8027315-degrees-freedom-chisquare-test.html) bagian *Calculating*.]
+### Versi pertama^[Dari pernyataan dalam halaman web [Sciencing.com](https://sciencing.com/info-8027315-degrees-freedom-chisquare-test.html) bagian *Calculating*, juga dalam [Statistikian](https://www.statistikian.com/2012/11/rumus-chi-square.html) pada bagian *Chi Square Hitung VS Chi Square Tabel*.]
 
-Dengan derajat kebebasan (degree of freedom = `df`) yang diperoleh dari $G-1$, sehingga menghasilkan $df = 5$. Nilai ini sesuai dengan hasil perhitungan di R menggunakan fungsi `chisq.test()`.
+Dengan derajat kebebasan (*degree of freedom* = `df`) yang diperoleh dari $G-1$, sehingga menghasilkan $df = 5$. Nilai ini sesuai dengan hasil perhitungan di R menggunakan fungsi `chisq.test()`.
 
 ### Versi kedua^[Norma Puspita, S.T., M.T., pada halaman 13 [tutorial berikut](https://t.me/ts2013a/109) (format pdf).]
 
 Dengan derajat kebebasan yang dihitung berdasarkan dua kondisi, yaitu:
 
-1. untuk distribusi normal & binomial ($P = 2$)
-2. untuk distribusi gumbel & poisson ($P = 1$)
+1. untuk distribusi normal dan binomial $(P = 2)$
+2. untuk distribusi gumbel dan poisson $(P = 1)$
 
 dihitung dengan cara $G-(P+1)$ sehingga menghasilkan $df = 3$ (untuk distribusi normal).
 
 Entahlah, harus belajar lagi. Tapi untuk sementara mari kita gunakan yang versi kedua untuk kasus kali ini. Nanti kalau sudah ketemu jawaban paling tepat akan saya perbarui artikel ini.^[Mohon bagi pembaca yang tahu jawabannya untuk menghubungi saya lewat [telegram](https://t.me/akherlan). Terima kasih~]
 
+Kita tidak menggunakan nilai p (`p-value`) yang dihasilkan dari perhitungan Chi-Square melalui fungsi `chisq.test()` karena $df = 5$ sedangkan yang kita perlukan adalah $df = 3$. Sehingga kita akan mencari nilai p pada selang kepercayaan 0.05 (persentil ke-95).
+
+Untuk memperoleh nilai Chi-Square kritis $(\chi_{cr}^2)$ bisa dengan fungsi berikut:
+
+```{r}
+qchisq(0.95, df = 3)
+```
+
 ## Kesimpulan
 
-Data hujan bisa diterima karena nilai Chi-Kuadrat hitung $\chi_{h}^2 = 5.9474$ kurang dari nilai kritis $\chi_{cr}^2 = 7.815$ (tingkat kepercayaan 0.05 untuk distribusi normal).
+Data hujan bisa diterima karena nilai Chi-Kuadrat hitung $\chi_{h}^2 = 5.947$ kurang dari nilai kritis $\chi_{cr}^2 = 7.815$ (selang kepercayaan 0.05 untuk distribusi normal).
 
 Yah, begitu. Gampang bukan?
 
@@ -162,7 +172,7 @@ Yah, begitu. Gampang bukan?
 
 Kalau teman-teman gak mau pakai R, mau pakai Excel saja! Mari bandingkan hasilnya.
 
-![Menghitung uji Chi-Square di worksheet](/post/2019-08-31-uji-chi-kuadrat-pada-data-hujan_files/chi-square-excel.png)
+![Menghitung uji Chi-Square dalam worksheet](/post/2019-08-31-uji-chi-kuadrat-pada-data-hujan_files/chi-square-excel.png)
 
 Demikian saya sampaikan. Sekian. Terima kasih.
 
@@ -171,3 +181,4 @@ Demikian saya sampaikan. Sekian. Terima kasih.
 1. Analisa Frekuensi dan Probabilitas Curah Hujan | [unduh pdf](https://t.me/ts2013a/109) lewat telegram (di dalamnya ada tabel $\chi^2$ kritis)
 2. Distribusi Frekuensi Data Kuantitatif di web [R-Tutor.com](http://www.r-tutor.com/elementary-statistics/quantitative-data/frequency-distribution-quantitative-data)
 3. The Goodness Fit di web [R-Tutor.com](http://www.r-tutor.com/elementary-statistics/goodness-fit/multinomial-goodness-fit)
+4. Distribusi Chi-Kuadrat di web [R-Tutor.com](http://www.r-tutor.com/elementary-statistics/probability-distributions/chi-squared-distribution)
