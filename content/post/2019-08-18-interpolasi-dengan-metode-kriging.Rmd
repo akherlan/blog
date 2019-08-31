@@ -29,7 +29,7 @@ Namun sebelumnya, mari kenali dahulu apa yang dimaksud dengan metode interpolasi
 
 ## Metode yang digunakan: Kriging
 
-Kriging merupakan metode prediksi spasial dengan pendekatan statistika. Namun pada tulisan ini saya hanya akan menjelaskan langkah-langkah melakukan interpolasinya saja. Jika teman-teman berminat ingin mempelajari teori Kriging lebih detail dan mendalam, sementara teman-teman bisa mengunjungi [catatan Mr. Gimond](https://mgimond.github.io/Spatial/spatial-interpolation.html#ordinary-kriging)tentang interpolasi Kriging sebagai referensi atau *googling*.
+Kriging merupakan metode prediksi spasial dengan pendekatan statistika. Namun pada tulisan ini saya hanya akan menjelaskan langkah-langkah melakukan interpolasinya saja. Jika teman-teman berminat ingin mempelajari teori Kriging lebih detail dan mendalam, sementara teman-teman bisa mengunjungi [catatan Mr. Gimond](https://mgimond.github.io/Spatial/spatial-interpolation.html#ordinary-kriging) tentang interpolasi Kriging sebagai referensi atau *googling*.
 
 ## Apa yang Kita Butuhkan? (Peralatan)
 
