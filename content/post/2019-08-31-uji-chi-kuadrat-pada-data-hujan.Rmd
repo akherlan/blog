@@ -1,0 +1,173 @@
+---
+title: "Uji Chi Kuadrat pada Data Hujan"
+author: "Andi"
+date: '2019-08-31'
+slug: uji-chi-kuadrat-pada-data-hujan
+tags:
+- hujan
+- hidrologi
+- rstats
+categories: statistika
+---
+
+*Saya harus belajar statistika lagi...*
+
+## TL;DR
+
+Mau ngasih tau langkah-langkah pengujian Chi-Square pakai R untuk analisis data curah hujan.
+
+## Maksud dan Tujuan
+
+Kali ini saya akan melakukan pengujian **Chi-Square** atau **Khi-Kuadrat** ([kata Wikipedia](https://id.wikipedia.org/wiki/Distribusi_khi-kuadrat)) pada data curah hujan Samarinda. Bacanya *khay* bukan *chiy*!
+
+Pengujian ini termasuk analisis uji kecocokan sebaran, yaitu *the goodness of fittest test* ([oppo iku?](https://www.google.com/search?safe=strict&source=hp&ei=VTpqXb2MGJzAz7sPt8mR6Ao&q=the+goodness+of+fit+test)). Dipakai untuk menguji kecocokan distribusi frekuensi sampel data terhadap fungsi distribusi peluang yang diperkirakan dapat menggambarkan atau mewakili distribusi frekuensi tersebut (rumitnya bahasa copas).
+
+Gampangnya? Kenapa ada uji Chi-Kuadrat ($\chi^2$)?
+
+Maksud dari pengujian ini adalah untuk menentukan persamaan distribusi yang akan dipilih nanti, apakah bisa mewakili distribusi statistik sampel data yang dianalisis atau tidak.
+
+Selain dengan metode ini, pengujian lain yang juga sering dipakai untuk analisis kecocokan distribusi curah hujan adalah metode pengujian Kolmogorov-Smirnov. *Hwaadaaw~!*
+
+Nanti kita belajar yang itu juga, insyaAllah...
+
+### Syarat
+
+Analisis bisa diterima kalau nilai Chi-Kuadrat yang kita hitung kurang dari Chi-Kuadrat Kritis ($\chi_{h}^2 < \chi_{cr}^2$). Nilai kritis itu diperoleh dari tabel.
+
+## Sumber Data
+
+Saya dapat data hujan ini dari seorang teman yang tinggal di Samarinda. Dia ambil bidang peminatan studi yang sama dengan saya. Jadi, dia juga ngolah data hujan gitu, seperti saya. Dan dia dapat data ini dari mana? Pasti dari instansi penyedia data meteorologi setempat (saya menerka).
+
+Data ini sudah saya rapikan dan disimpan dalam format `csv` agar teman-teman bisa langsung ikut mempraktikan apa yang saya tulis di sini.
+
+Silakan unduh melalui [tautan ini](https://github.com/akherlan/blog/blob/master/static/data/hujan-samarinda.csv). Atau tidak usah juga tidak apa. Nanti akses langsung saja dari url di RStudio kesayangan Anda. Seperti yang akan kita lakukan berikut.
+
+## Persiapan Data
+
+Lakukan impor data dari repositori github (pakai koneksi internet).
+
+```{r Impor Data, warning=FALSE}
+url <- "https://raw.githubusercontent.com/akherlan/blog/master/static/data/hujan-samarinda.csv"
+data <- read.csv(url)
+data
+summary(data)
+```
+
+## Pengolahan Data
+
+Pertama, kita akan membagi data menjadi kelompok-kelompok tertentu (distribusi frekuensi). Tapi sebelumnya, ada beberapa parameter yang harus ditentukan dulu seperti di bawah.
+
+### 1. Jumlah kelas data
+
+Katakanlah kita ingin membuat kelompok-kelompok tertentu untuk mencacah data kita. Jumlahnya ($G$) bisa kita hitung dengan persamaan ini:
+
+$G = 1 + 3.322 \times log(n)$
+
+dengan $n$ merupakan jumlah data yang kita punya.
+
+```{r Hitung Jumlah Kelas, warning=FALSE}
+# nilai G yang dibulatkan ke atas
+g <- ceiling(1 + 3.322 * log10(nrow(data)))
+g
+```
+
+### 2. Interval kelas
+
+Interval antar kelompok ($\Delta X$) bisa kita tentukan dengan cara berikut:
+
+$\Delta X = \frac {X_{max} - X_{min}}{G - 1}$
+
+Dimana, $X_{max}$ merupakan nilai data paling besar dan $X_{min}$ merupakan nilai data paling kecil.
+
+```{r Hitung Interval, warning=FALSE}
+# interval data
+int <- (max(data$data) - min(data$data)) / (g-1)
+int
+```
+
+### 3. Batas-batas kelas
+
+$X_{awal} = X_{min} - 0.5 \Delta X$
+
+$X_{akhir} = X_{max} + 0.5 \Delta X$
+
+```{r Hitung Batas, warning=FALSE}
+# batas awal kelas
+awal <- min(data$data) - 0.5*int
+awal
+
+# batas akhir kelas
+akhir <- max(data$data) + 0.5*int
+akhir
+```
+
+Sampai di sini, kita sudah tahu bahwa nanti kita buat data jadi enam kelompok. Batas awal 53.01 dan batas akhir 139.29 dengan interval 14.38.
+
+Setelah ditentukan batas-batas dan interval data, sekarang kita bisa mendefinisikan data ke dalam masing-masing kelompoknya, yang ada enam itu.
+
+Misal, kalau ada rentang data 0-10, kita buat jadi 5 kelompok dengan interval 2. Maka nilai 9 akan kita masukkan ke kelompok data 8-10, bukan kelompok data 4-6, dan dihitung 1. Kalau ada nilai 10. Kita masukkan lagi ke kelompok 8-10. Jadi sekarang ada 2 frekuensinya. Begitu juga dengan nilai lain.
+
+Caranya...
+
+```{r Tabel Distribusi Frekuensi, warning=FALSE}
+# buat kelompok-kelompoknya
+kelompok <- seq(awal, akhir, by=int)
+
+# menghitung frekuensi (banyaknya data) tiap kelompok 
+masuk.kelas <- cut(data$data, kelompok, right = FALSE)
+freq <- table(masuk.kelas)
+dist.freq <- cbind(freq)
+dist.freq
+```
+
+Sekarang, kita sudah memperoleh frekuensi dari masing-masing kelompok data.
+
+## Menghitung Chi-Kuadrat
+
+Aslinya, rumus untuk menghitung Chi-Kuadrat adalah seperti ini:
+
+$\chi_{h}^2 = \sum\limits_{i=1}^G \frac{{(O_i - E_i)}^2}{E_i}$
+
+Tapi di R, ada fungsinya, tinggal pakai `chisq.test(datakamu)`. Untuk kasus data curah hujan yang kita punya, jadi begini:
+
+```{r Menghitung Chi-Square, warning=FALSE}
+chisq <- chisq.test(dist.freq)
+chisq
+```
+
+Ketika membandingkan $\chi_{h}^2$ dengan $\chi_{cr}^2$ sesungguhnya saya mengalami kebingunan. Ada dua versi.
+
+### Versi pertama^[Dari pernyataan dalam halaman web [Sciencing.com](https://sciencing.com/info-8027315-degrees-freedom-chisquare-test.html) bagian *Calculating*.]
+
+Dengan derajat kebebasan (degree of freedom = `df`) yang diperoleh dari $G-1$, sehingga menghasilkan $df = 5$. Nilai ini sesuai dengan hasil perhitungan di R menggunakan fungsi `chisq.test()`.
+
+### Versi kedua^[Norma Puspita, S.T., M.T., pada halaman 13 [tutorial berikut](https://t.me/ts2013a/109) (format pdf).]
+
+Dengan derajat kebebasan yang dihitung berdasarkan dua kondisi, yaitu:
+
+1. untuk distribusi normal & binomial ($P = 2$)
+2. untuk distribusi gumbel & poisson ($P = 1$)
+
+dihitung dengan cara $G-(P+1)$ sehingga menghasilkan $df = 3$ (untuk distribusi normal).
+
+Entahlah, harus belajar lagi. Tapi untuk sementara mari kita gunakan yang versi kedua untuk kasus kali ini. Nanti kalau sudah ketemu jawaban paling tepat akan saya perbarui artikel ini.^[Mohon bagi pembaca yang tahu jawabannya untuk menghubungi saya lewat [telegram](https://t.me/akherlan). Terima kasih~]
+
+## Kesimpulan
+
+Data hujan bisa diterima karena nilai Chi-Kuadrat hitung $\chi_{h}^2 = 5.9474$ kurang dari nilai kritis $\chi_{cr}^2 = 7.815$ (tingkat kepercayaan 0.05 untuk distribusi normal).
+
+Yah, begitu. Gampang bukan?
+
+## Bonus!
+
+Kalau teman-teman gak mau pakai R, mau pakai Excel saja! Mari bandingkan hasilnya.
+
+![Menghitung uji Chi-Square di worksheet](/post/2019-08-31-uji-chi-kuadrat-pada-data-hujan_files/chi-square-excel.png)
+
+Demikian saya sampaikan. Sekian. Terima kasih.
+
+## Referensi
+
+1. Analisa Frekuensi dan Probabilitas Curah Hujan | [unduh pdf](https://t.me/ts2013a/109) lewat telegram (di dalamnya ada tabel $\chi^2$ kritis)
+2. Distribusi Frekuensi Data Kuantitatif di web [R-Tutor.com](http://www.r-tutor.com/elementary-statistics/quantitative-data/frequency-distribution-quantitative-data)
+3. The Goodness Fit di web [R-Tutor.com](http://www.r-tutor.com/elementary-statistics/goodness-fit/multinomial-goodness-fit)
