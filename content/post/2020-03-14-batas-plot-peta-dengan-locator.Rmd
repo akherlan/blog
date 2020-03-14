@@ -1,0 +1,108 @@
+---
+title: Menentukan Batas Plot Peta di R
+author: Andi
+date: '2020-03-14'
+slug: batas-plot-peta-locator
+categories:
+  - tutorial
+tags:
+  - rstats
+  - spatial
+---
+
+Kita akan menggunakan fungsi `locator(1)` dari paket `graphics` untuk memperoleh nilai koordinat pada kanvas plot. Kita akan menggunakan nilai-nilai ini sebagai batas plot peta Indonesia dan negara sekitarnya. Sehingga tidak perlu lagi menduga-duga berapa nilai yang tepat untuk batas peta tersebut.
+
+Beberapa library R yang akan kita gunakan kali ini diantaranya:
+
+```{r library, message=FALSE, warning=FALSE}
+library("rnaturalearth")  # data peta dari Natural Earth
+library("sf")             # mengelola data peta simple feature
+library("ggplot2")        # untuk plot
+library("dplyr")          # agar kita bisa melakukan piping (%>%)
+```
+
+Katakanlah kita ingin menampilkan peta wilayah Asia Tenggara dan sedikit bagian Oceania dan Australia.
+
+```{r data}
+map <- ne_countries(continent = c("Asia", "Oceania"), returnclass = "sf")
+plot(st_geometry(map))
+```
+
+Tampak ada bagian dari Oceania yang terpisah di sebelah kiri (kelihatan titik hitam) hingga membuat peta jadi terpisah dan kosong di tengah. Lagipula kita hanya ingin menampilkan daratan yang berada di sekeliling Indonesia saja. Maka kita perlu memotong peta ini.
+
+Kita bisa menggunakan batas-batas koordinat untuk memotong peta seperti berikut (jalankan perintah baris per baris).
+
+```{r mengambil koordinat, eval=FALSE, include=TRUE}
+# untuk (x, y) minimum & maksimum
+min <- locator(1) %>% unlist()
+max <- locator(1) %>% unlist()
+```
+
+Koordinat minimum berada di pojok kiri bawah bagian peta yang ingin di ekspos, sedangkan koordinat maksimum berada di bagian pojok kanan atas.
+
+Untuk lebih jelas saya coba sertakan ilustrasi/gambarnya di bawah, juga pada tweet berikut^[Pada tweet tersebut saya menggunakan *class object* `sp`, bukan `sf` seperti pada tulisan ini.] (mohon maaf sedang malas buat screenshot baru :sad:).
+
+<img src="https://pbs.twimg.com/media/ESrecYSUcAMafVd?format=png">
+
+<img src="https://pbs.twimg.com/media/ESrecYTUwAMPlCE?format=png">
+
+<blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">How to get coordinates as boundary of maps in <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a>, working with spatial polygon <a href="https://twitter.com/hashtag/sp?src=hash&amp;ref_src=twsrc%5Etfw">#sp</a> package. <a href="https://t.co/3ufXfoFKAM">pic.twitter.com/3ufXfoFKAM</a></p>&mdash; Andi (@terusterang__)
+  <a href="https://twitter.com/terusterang__/status/1237045860472467457?ref_src=twsrc%5Etfw">March 9, 2020</a>
+  </blockquote>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+```{r definisikan min max, include=FALSE}
+min <- c(92.43036, -14.16366) %>% `names<-`(c("x","y"))
+max <- c(165.75251,  21.28303) %>% `names<-`(c("x","y"))
+```
+
+Setelah kita peroleh nilai-nilai koordinat batas dalam `min` dan `max`, kita bisa membuat plot baru. Implementasikan titik koordinat `(x, y)` yang sudah kita koleksi tadi ke peta baru kita dengan cara berikut:
+
+```{r plot asia tenggara}
+ggplot() +
+  geom_sf(data = map) +
+  coord_sf(xlim = c(min[1], max[1]), ylim = c(min[2], max[2]))
+```
+
+`[1]` adalah kolom yang mengandung nilai koordinat `x` sedangkan `[2]` adalah kolom nilai koordinat `y`.
+
+Bagian `coord_sf()` memberikan batasan atau limitasi pada peta yang akan diplot, tanpa menghilangkan data yang kita miliki. Kita bisa periksa extend data yang kita punya.
+
+```{r lihat bbox data awal}
+st_bbox(map)
+```
+
+Tampak berbeda dengan extend plot peta baru, yakni:
+
+```{r nilai minmax}
+min; max
+```
+
+## Final Map
+
+```{r plot akhir map, message=FALSE, warning=FALSE}
+ggplot() +
+  geom_sf(data = map, fill = "white", col = "grey", size = 0.30) +
+  geom_sf( # Indonesia
+    data = map[map$name == "Indonesia",], 
+    fill = "peachpuff", 
+    col = "darkgrey",
+    size = 0.35) +
+  coord_sf(
+    xlim = c(min[1], max[1]), 
+    ylim = c(min[2], max[2])) +
+  labs(
+    title = "Peta Indonesia dan Negara-Negara Tetangga",
+    caption = "Data: Natural Earth",
+    x = "Bujur",
+    y = "Lintang") +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "lightskyblue2", size = 0),
+    panel.grid = element_line(size = 0.1, color = "blue"),
+    plot.caption = element_text(size = 8, color = "gray"),
+    axis.title = element_text(size = 9, color = "blue"))
+```
+
+Selamat mencoba.

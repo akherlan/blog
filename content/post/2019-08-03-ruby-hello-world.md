@@ -23,7 +23,9 @@ Tapi saya jadi pingin belajar, lho!
 
 Ruby di Ubuntu saya menggunakan **irb** atau katakanlah *"Interface Ruby"* lewat terminal emulator. Tandanya sudah jalan, begini:
 
-`irb(main):001:0>`
+```{ruby}
+irb(main):001:0>
+```
 
 Cara masuk ke antarmuka ini tinggal ketikkan `irb` di terminal kesayanganmu.
 
@@ -31,11 +33,13 @@ Cara masuk ke antarmuka ini tinggal ketikkan `irb` di terminal kesayanganmu.
 
 Yang pertama saya pelajari tentu saja `"Hello world!"`. Bagaimana?
 
-`puts "Hello world!"`
+```{ruby}
+puts "Hello world!"
+```
 
 Hasilnya?
 
-```
+```{ruby}
 irb(main):001:0> puts "Hello world!"
 Hello world!
 => nil
@@ -47,33 +51,39 @@ Tentu saja saya langsung lanjut ke materi berikutnya karena langsung bisa. Selan
 
 Operasi yang mirip dengan bahasa pemrograman lainnya seperti `+`, `-`, `*`, `/`, `**`, `%`, tapi untuk akar dipakai `Math.sqrt()`. Kenapa begitu? Nanti saya belajar lagi. Dijelaskan oleh tutorial. Tapi saya kurang perhatikan. Hehe... Nanti saja di-*update* artikel ini.
 
-`2 + 2`
+```{ruby}
+2 + 2
+```
 
 Hasilnya:
 
-```
+```{ruby}
 irb(main):002:0> 2 + 2
 => 4
 ```
 
 Nah, lo! Tadi ada `==> nil` begitu. Sekarang nggak. Coba lagi:
 
-`6 / 3`
+```{ruby}
+6 / 3
+```
 
 Hasilnya seperti ini:
 
-```
+```{ruby}
 irb(main):003:0> 6 / 3
 => 2
 ```
 
 Coba kita balik lagi ke yang string tadi.
 
-`puts "saya siapa"`
+```{ruby}
+puts "saya siapa"
+```
 
 Hasilnya:
 
-```
+```{ruby}
 irb(main):004:0> puts "saya siapa"
 saya siapa
 => nil
@@ -81,11 +91,13 @@ saya siapa
 
 Baiklah, tapi kalau begini:
 
-`print "saya andi"`
+```{ruby}
+print "saya andi"
+```
 
 Maka hasilnya menjadi:
 
-```
+```{ruby}
 irb(main):005:0> print "saya andi"
 saya andi=> nil
 ```

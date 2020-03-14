@@ -42,7 +42,7 @@ Saya dapat data hujan ini dari seorang teman yang tinggal di Samarinda. Dia ambi
 
 Data ini sudah saya rapikan dan disimpan dalam format `csv` agar teman-teman bisa langsung ikut mempraktikan apa yang saya tulis di sini.
 
-Silakan unduh melalui [tautan ini](https://github.com/akherlan/blog/blob/master/static/data/hujan-samarinda.csv). Atau tidak usah juga tidak apa. Nanti akses langsung saja dari url di RStudio kesayangan Anda. Seperti yang akan kita lakukan berikut.
+Silakan unduh melalui [tautan ini](https://raw.githubusercontent.com/akherlan/blog/master/static/data/hujan-samarinda.csv) (klik kanan lalu *save as*). Atau tidak usah juga tidak apa. Nanti kita bisa akses langsung saja dari url di RStudio kesayangan Anda. Seperti yang akan kita lakukan berikut.
 
 ## Persiapan Data
 
@@ -54,6 +54,8 @@ data <- read.csv(url)
 data
 summary(data)
 ```
+
+Jika tadi sudah mengunduh datanya terlebih dulu, maka bisa mengganti nilai yang didefinisikan ke `url` dengan lokasi penyimpanan berkas `.csv`-nya.
 
 ## Pengolahan Data
 

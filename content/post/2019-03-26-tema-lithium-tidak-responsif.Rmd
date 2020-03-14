@@ -7,15 +7,15 @@ tags: website
 categories: belajar
 ---
 
-Ini merupakan tulisan dokumentasi saya untuk permasalahan tema Lithium yang tidak responsif (saat hari ini saya gunakan). Ukuran gambar tidak menyesuaikan ukuran layar. Sangat fatal ketika dibuka dari ponsel, mengingat sebagian besar akses internet hari ini adalah melalui ponsel. Alamak!
+Ini merupakan tulisan dokumentasi saya untuk permasalahan tema Lithium yang tidak responsif (saat tulisan ini mulai ditulis). Ukuran gambar tidak menyesuaikan ukuran layar. Sangat fatal ketika dibuka dari ponsel. Padahal sebagian besar akses internet hari ini adalah melalui ponsel. Alamak!
 
-Awalnya saya tanya di grup [GNU/R Indonesia](https://t.me/GNURIndonesia), padahal ini tidak ada kaitannya sama sekali dengan pemrograman R. Tetapi karena saya ngeblog dari R menggunakan paket `blogdown`, jadi saya coba tanyakan saja. Cocoklogi. Hihihi... Ada saran, ganti tema yang responsif saja, atau tambahkan skrip bootstrap di dalamnya, alamak! Nggak ngerti!
+Awalnya saya tanya di grup [GNU/R Indonesia](https://t.me/GNURIndonesia), walaupun ini tidak ada kaitannya sama sekali dengan pemrograman R. Tapi karena saya ngeblog dari R menggunakan paket `blogdown`, jadi saya coba tanyakan saja. Cocoklogi. Hihihi... Ada saran, ganti tema yang responsif saja, atau tambahkan skrip bootstrap di dalamnya, alamak! Nggak ngerti!
 
-Saya tidak menyerah, tetap *searching*... Ketemu!
+Saya tidak menyerah, tetap *searching*... Seperti biasa. Ketemu!
 
-Ada orang yang baik hati menambahkan fitur responsif pada tema Lithium yang saya pakai ini. Entah apa motifnya, karena pada akhirnya templat itu pun ternyata tidak ia gunakan. Tapi, ya sudah. Saya bersyukur.
+Malalui repositori github pembuat awalnya ternyata sudah dibuat responsif. Saya mengira barangkali ini sudah mengalami pemutakhiran kode CSS dari sebelumnya.
 
-Namun ada satu kendala lagi. Saya harus mencari bagian mana yang diubah. Saya tidak langsung mengganti tema Lithium yang saya gunakan (dari [yihui](https://github.com/yihui/hugo-lithium)) dengan tema Lithium modifikasi yang baru (dari [jrutheiser](https://github.com/jrutheiser/hugo-lithium-theme)).
+Namun ada satu kendala lagi. Saya harus mencari bagian mana yang diubah. Saya tidak langsung mengganti tema Lithium yang saya gunakan (dari [yihui](https://github.com/yihui/hugo-lithium)) dengan tema Lithium yang dimodifikasi oleh pembuat awalnya ([jrutheiser](https://github.com/jrutheiser/hugo-lithium-theme)).
 
 Untungnya ketemu, ada di dalam `main.css`, seperti berikut:
 
