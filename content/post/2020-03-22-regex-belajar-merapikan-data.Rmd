@@ -25,7 +25,14 @@ Saya pakai iterasi untuk impor berkas `csv`, menggunakan fungsi `map_dfr()` dari
 
 Begini jadinya...
 
-```{r impor data csv, warning=FALSE}
+```{r impor data back, include=FALSE}
+# impor data dari berkas csv
+files <- fs::dir_ls("~/R/gitr/data/datagempa/", regexp = "[0-9]{4}\\.csv")
+gempa <- purrr::map_dfr(files, read.csv)
+```
+
+
+```{r impor data csv front, warning=FALSE, include=TRUE, eval=FALSE}
 # impor data dari berkas csv
 files <- fs::dir_ls("~/Downloads/datagempa/", regexp = "[0-9]{4}\\.csv")
 gempa <- purrr::map_dfr(files, read.csv)
