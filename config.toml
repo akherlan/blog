@@ -1,4 +1,5 @@
 baseurl = "/"
+publishdir = "docs"
 languageCode = "en-us"
 title = "Engineer of words"
 author = "Andi"
