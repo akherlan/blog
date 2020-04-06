@@ -1,0 +1,357 @@
+---
+title: 'Contek Kode: Rute TransJakarta'
+author: Andi
+date: '2020-04-06'
+slug: rute-transjakarta
+categories:
+  - tutorial
+  - belajar
+tags:
+  - data
+  - transportasi
+  - transjakarta
+---
+
+_Mari kita plesiran ke blog para jagoan!_
+
+Entah kenapa saya tiba-tiba ingat blognya Mas [Rasyid Ridha](http://rasyidridha.com/) yang masih saja belum aktif diisi lagi sampai sekarang. Mungkin masih sibuk dengan kegemaran lainnya. Atau jangan-jangan pindah web???
+
+Melalui eksplorasi sekadarnya, weezz.... langsung ketemu dengan repo [transjakarta](https://github.com/rasyidstat/transjakarta). Repo ini menyimpan kode-kode untuk eksplorasi data dalam menulis [sebuah artikel](http://rasyidridha.com/datakepo/rute-transjakarta/) bernuansa _transportist_. Data yang digunakan diperoleh dari [Traffi](https://www.trafi.com/id/jakarta/transjakarta).
+
+Supaya saya jadi nggak cuma _repost_ doang di sini, tulisan ini akan mengupas dan mengulas cara-cara Mas Rasyid mengolah data rute TransJakarta. Tentunya dari sudut pandang saya sebagai orang yang sedang mempelajari kode-kodenya Mas Rasyid.
+
+Catatan ini saya bagi ke dalam empat bagian:
+
+1. Get the Data
+2. Explore the Routes
+3. Reformatting Data
+4. Visualization
+
+Mari kita demokan di sini sambil belajar...
+
+## Get the Data
+
+Pertama, Mas Rasyid menggunakan library `jsonlite` dan library terkenal `tidyverse` untuk _collect the data_. Format teks dari data yang disediakan oleh Traffi memang teks javascript json.
+
+Saya coba sedikit-sedikit menyesuaikan atau edit kode-kodenya Mas Rasyid supaya kita bisa pelajari bersama secara lebih jelas dan deskriptif.
+
+Berikut untuk memuat library:
+
+```{r warning=FALSE}
+library("jsonlite")
+library("tidyverse")
+```
+
+Jadi, kalau yang saya pahami dari cara-cara ini, sama seperti _scrapping_ teks berita. Hanya kali ini yang kita "garuk" adalah teks json. Yaudah cuz...
+
+```{r}
+# ini tautannya bro
+main_url <- "https://www.trafi.com/api/schedules/jakarta/"
+route <- paste0(main_url, "all?transportType=")
+json_tj <- paste0(route, "transjakarta")
+```
+
+Kita akan mengambil data format json lalu jadikan data.frame di R:
+
+```{r, eval=FALSE, include=TRUE}
+df_tj <- fromJSON(json_tj)[[1]] %>% 
+  unnest(cols = c(schedules))
+```
+
+```{r include=FALSE}
+#df_tj <- fromJSON(json_tj)[[1]] %>% 
+#  unnest(cols = c(schedules))
+#saveRDS(df_tj, "~/R/data/tj_raw.rds")
+df_tj <- readRDS("~/R/data/tj_raw.rds")
+```
+
+Saat percobaan untuk mengunduh dan mengonversi data text json menjadi dataframe, transformasinya adalah:
+
+1. teks json diunduh dari url yang sudah disimpan dalam variabel `json_tj` dengan menggunakan perintah `fromJSON(json_tj)` lalu disimpan di memori dalam bentuk list.
+2. `[[1]]` mengindeks list pertama (dan satu-satunya) hasil dari perintah `fromJSON(json_tj)`, hasilnya berupa list/data.frame dengan 3 kolom.
+3. `unnest(cols = c(schedules))` mengambil kolom ke-3 dari data.frame, nama kolomnya `schedules` yang berupa list/data.frame.
+
+Sehingga hasilnya menjadi data.frame seperti berikut:
+
+```{r}
+glimpse(df_tj) # struktur data
+head(df_tj)    # 6 data teratas pada tabel
+```
+
+Selanjutnya, kita akan membuat sebuah fungsi bantu. Fungsi ini berikutnya akan kita pakai untuk mendapatkan daftar tautan baru.
+
+Daftar ini di-_generate_ dari salah satu kolom dalam data.frame yang sudah kita peroleh sebelumnya yaitu data.frame `df_tj`, nama kolomnya `scheduleId`.
+
+```{r}
+# bikin fungsi untuk dapatkan detail tiap rute TJ
+route_det <- function(schedule_id, transport) {
+  paste0(main_url, "schedule?scheduleId=", schedule_id, "&transportType=", transport)
+}
+```
+
+Tautan-tautan itu akan disimpan dalam kolom `route_url`. Selain kolom `route_url` dibuat juga dua kolom lainnya. Kolom-kolom itu adalah `route_info` dan `load_date` (tanggal pada saat data diambil).
+
+Di dalam `route_info` juga ada data lagi (data di dalam tabel data) berupa teks json yang dieksrak dari daftar url dalam `route_url`.
+
+Kita menggunakan fungsi `map` dan `map2_chr` dari library `purrr`, salah satu library dalam _buntelan_ library `tidyverse`.
+
+```{r eval=FALSE, include=TRUE}
+# jalankan ini dan tunggu sebentar, mungkin agak lama
+df_tj <- df_tj %>%
+  mutate(route_url = map2_chr(scheduleId, "transjakarta", route_det),
+         route_info = map(route_url, fromJSON),
+         load_date = Sys.Date())
+```
+
+```{r include=FALSE}
+# supaya gak blacklist port nya karena terlalu banyak request
+# df_tj <- df_tj %>%
+#  mutate(route_url = map2_chr(scheduleId, "transjakarta", route_det),
+#         route_info = map(route_url, fromJSON),
+#         load_date = Sys.Date())
+#saveRDS(df_tj, "~/R/data/tj_raw_2nd.rds")
+df_tj <- readRDS("~/R/data/tj_raw_2nd.rds")
+```
+
+Coba yuk, kita lihat hasilnya. Kolom-kolom tabel yang ditambahkan ke `df_tj` adalah tiga kolom berikut.
+
+```{r}
+head(df_tj[10:12])
+```
+
+Lalu jika ingin menyimpan data full-nya, kita menggunakan fungsi berikut.
+
+```{r front, eval=FALSE, include=TRUE}
+saveRDS(df_tj, "data/tj_detail.rds")
+```
+
+```{r back-local, include=FALSE}
+saveRDS(df_tj, "~/R/data/tj_detail.rds")
+```
+
+## Explore the Routes
+
+Berikutnya kita akan mengolah data `tj_detail.rds` yang tadi sudah disimpan. Tapi karena data ini sudah ada di lingkungan kerja kita dengan nama `df_tj`, kita akan pakai itu saja.
+
+Pada bagian ini, kita menambah tiga library untuk membantu pekerjaan yaitu `googleway`, `sf`, dan `stringr`.
+
+**Untuk diperhatikan:** Jika teman-teman menggunakan komputer Linux khususnya Ubuntu, sebaiknya melakukan instalasi beberapa paket dependensi untuk library `sf` dulu, jika belum pernah menginstal `sf`.
+
+Dependensinya adalah GEOS, PROJ, dan GDAL seperti instruksi [dari sini](https://r-spatial.github.io/sf/#linux). Untuk macOS [di sini](https://r-spatial.github.io/sf/#macos). Baru setelahnya instal `sf`.
+
+Jika sudah, kita lanjut... memuat library lagi.
+
+```{r warning=FALSE}
+library("googleway")
+library("stringr")
+library("sf")
+```
+
+Kita akan melakukan transformasi data.frame `df_tj`. Langkah-langkah yang dilakukan adalah:
+
+1. Menambah kolom baru dengan nama `halte_detail` dan `route`, sekaligus menghilangkan kolom `route_info`.
+2. Membuat data.frame baru dengan nama `df_route` berisi informasi rute TransJakarta.
+
+```{r message=FALSE, warning=FALSE}
+# langkah 1
+df_tj <- df_tj %>%
+  as_tibble() %>%
+  mutate(halte_detail = map(df_tj$route_info, "stops"),
+         route = map(df_tj$route_info, "tracks")) %>%
+  select(-route_info)
+
+# langkah 2
+df_route <- df_tj %>%
+  select(schedule_id = scheduleId,
+         transport_id = transportId,
+         validity, name, 
+         long_name = longName, 
+         color, route) %>%
+  unnest() %>%
+  rename(route_name = name1,
+         is_hidden = isHidden)
+```
+
+`is_hidden` digunakan untuk menyembunyikan satu rute yang nggak full pada suatu koridor. Aduh, saya kurang paham apa istilahnya.
+
+Misal begini: **Koridor 1** adalah **Blok M - Kota**, rute utamanya adalah dari halte Blok M ke halte Kota (`main`), atau sebaliknya (`main_reverse`). Selain itu, ada rute perjalanan yang tidak dari halte ujung ke ujung, misalnya rute **Bundaran Senayan - Kota** atau sebaliknya, juga rute **Harmoni - Blok M** atau sebaliknya. Ketiga rute ini semuanya ada dalam koridor 1, tetapi hanya rute Blok M - Kota yang menggunakan argumen `isHidden` sama dengan `FALSE`, karena geometri rute utama ini memang harus ditampilkan.
+
+Semoga bisa diterima penjelasan saya. Hehehe... Untuk lebih jelas saya coba subset tabelnya seperti ini:
+
+```{r}
+df_route[1:10, c(4:5, 7:8, 11)]
+```
+
+Dan, mari kita tilik sejenak struktur tabel data.frame baru `df_route`, hm...
+
+```{r}
+glimpse(df_route)
+```
+
+Kolom `shape` (paling akhir) kelihatannya agak aneh ya?
+
+Itu karena data ini merupakan data geometri yang di-_encode_ menjadi baris karakter melalui [Google's polyline algorithm](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) yang digunakan Traffi.
+
+Kita bisa konversi ke data yang lebih terbaca. Kita pakai bantuan library `googleway` dan `sf`.
+
+```{r}
+# fungsi untuk konversi tipe geometri data GIS-nya
+convert_shape <- function(x, y) {
+  x %>%
+    st_as_sf(coords = c("lon", "lat")) %>%
+    group_by(gr = y) %>%
+    summarise(do_union = FALSE) %>%
+    st_cast("LINESTRING") %>%
+    ungroup() %>%
+    select(geometry)
+}
+
+# decode google's polyline
+df_route <- df_route %>%
+  mutate(shape_decode = map(shape, decode_pl)) %>%
+  unnest(shape_decode)
+
+# bentuk geometri
+df_route <- df_route %>%
+  st_as_sf(coords = c("lon", "lat")) %>%
+  group_by_at(vars(-geometry, -stops)) %>%
+  summarise(do_union = FALSE) %>%
+  st_cast("LINESTRING")
+```
+
+Sampai di sini, kita sudah mendapatkan bentuk geometri rute yang bisa ditampilkan jadi gambar. Coba kita tes?
+
+```{r}
+ggplot() +
+  geom_sf(data = df_route %>%
+            filter(is_hidden == FALSE,
+                   direction == 1),
+          aes(color = route_name)) +
+  guides(color = FALSE)
+```
+
+Ini adalah rute yang beroperasi pada tanggal tulisan ini diperbarui. Sepertinya lebih sedikit dari yang seharusnya. Bahkan kalau dibandingkan dengan rute pada tanggal 25 Juni 2018 di blog Mas Rasyid ([gambar](http://rasyidridha.com/images/datakepo/tj/tj_route.png)), rute hari ini tetap lebih sedikit.
+
+Contoh lain rute yang dibuat pada 7 November 2019, sangat banyak.
+
+<img src = "https://raw.githubusercontent.com/rasyidstat/transjakarta/master/figs/tj_route_20191107.png">
+
+Mungkin ini operasi khusus selama penyebaran pandemi Covid-19.
+
+<blockquote class="twitter-tweet"><p lang="in" dir="ltr">Sahabat TiJe, lihat informasi rute Transjakarta yang beroperasi per 6 April 2020 pada gambar di bawah ini. Harap selalu menerapkan social dan physical distancing saat berada di lingkungan Transjakarta. <a href="https://twitter.com/hashtag/TiJeTanggapCorona?src=hash&amp;ref_src=twsrc%5Etfw">#TiJeTanggapCorona</a> <a href="https://t.co/tvMGnQWos0">pic.twitter.com/tvMGnQWos0</a></p>&mdash; Transportasi Jakarta (@PT_Transjakarta) <a href="https://twitter.com/PT_Transjakarta/status/1247011146676256770?ref_src=twsrc%5Etfw">April 6, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## Reformatting Data
+
+Untuk finalisasi Mas Rasyid membuat data ini jadi lebih rapi.
+
+Pertama, menamai ulang kolom-kolomnya, lalu mengurutkannya, dan didefinisikan ke `transjakarta_route`.
+
+```{r}
+transjakarta_route <- df_route %>%
+  select(transport_id,
+         schedule_id,
+         corridor_id = name,
+         corridor_name = long_name,
+         corridor_color = color,
+         route_id = id,
+         route_name,
+         direction,
+         validity,
+         is_hidden)
+```
+
+Kedua, menambahkan sistem koordinat referensi (CRS).
+
+```{r}
+transjakarta_route <- transjakarta_route %>%
+  as_tibble() %>%
+  st_as_sf()
+st_crs(transjakarta_route) <- 4326
+transjakarta_route
+```
+
+Data rute TJ ini juga dilengkapi dengan keterangan arah bolak-balik, dan apakah termasuk rute utamanya atau bukan.
+
+```{r}
+transjakarta_route <- transjakarta_route %>%
+  group_by(corridor_id, direction) %>%
+  mutate(n = n()) %>%
+  ungroup() %>%
+  mutate(is_main = ifelse(corridor_name == route_name, TRUE, FALSE),
+         is_main_reverse = ifelse(corridor_name ==
+                                    paste0(str_extract(route_name, "(?<=- ).*$"),
+                                           " - ",
+                                           str_extract(route_name, "^.*(?= -)")),
+                                  TRUE, FALSE)) %>%
+  mutate(is_main = ifelse(n == 1 & direction == 1, TRUE, is_main),
+         is_main_reverse = ifelse(n == 1 & direction == 2, TRUE, is_main_reverse))
+transjakarta_route[,c(3, 7:8, 12:14)]
+```
+
+Koridor utama yang beroperasi pada hari data ini diambil:
+
+```{r}
+(ua <- filter(transjakarta_route, is_main == TRUE | is_main_reverse == TRUE)$corridor_id %>% unique())
+```
+
+Selain itu, koridor lainnya yang beroperasi adalah:
+
+```{r}
+(ua_neg <- setdiff(unique(transjakarta_route$corridor_id), ua))
+```
+
+Jumlah rute yang beroperasi tapi bukan dari ujung ke ujung, atau tidak penuh satu koridor (`is_main == FALSE`):
+
+```{r}
+n_distinct(transjakarta_route$corridor_id) - n_distinct(ua) 
+
+# cek lagi dengan cara lain
+transjakarta_route %>%
+  filter(corridor_id %in% ua_neg, is_hidden == FALSE) %>%
+  .$corridor_id %>%
+  n_distinct()
+```
+
+Terakhir, mendefinisikan ulang rute-rute yang tidak penuh satu koridor tadi (`is_main == FALSE`) tetapi tetap ditampilkan (`is_hidden == FALSE`) menjadi bernilai `is_main == TRUE` (nilai `direction == 1`) atau `is_main_reverse == TRUE` (nilai `direction == 2`).
+
+```{r}
+transjakarta_route <- transjakarta_route %>%
+  mutate(is_main = ifelse(corridor_id %in% ua_neg &
+                            is_hidden == FALSE &
+                            direction == 1, TRUE, is_main),
+         is_main_reverse = ifelse(corridor_id %in% ua_neg &
+                                    is_hidden == FALSE &
+                                    direction == 2, TRUE, is_main_reverse)) %>%
+  select(-n, -is_hidden)
+glimpse(transjakarta_route)
+```
+
+Kalau mau disimpan datanya, mari simpan...
+
+```{r eval=FALSE, include=TRUE}
+saveRDS(transjakarta_route, "data/tj_route.rds")
+```
+
+## Visualisasi
+
+```{r visualisasi}
+tj <- transjakarta_route %>% 
+  filter(direction == 1, is_main == TRUE)
+
+tj_col <- paste0("#", tj$corridor_color)
+names(tj_col) <- tj$corridor_id
+
+ggplot() +
+  geom_sf(data = tj, aes(color = corridor_id)) +
+  coord_sf(datum = NA) +
+  theme_minimal() +
+  guides(color = FALSE) +
+  scale_color_manual(values = tj_col) +
+  labs(title = "Rute Pelayanan TransJakarta",
+       subtitle = "Di tengah pandemi Covid-19",
+       caption = "sumber: trafi.com\ntanggal: 6 April 2020")
+```
+
+Untuk eksplorasi rute terpanjang dan terpendek dari pelayanan BRT TransJakarta, teman-teman bisa baca tulisan Mas Rasyid tentang eksplorasi rute TransJakarta menggunakan library `sf` di [blognya](http://rasyidridha.com/datakepo/rute-transjakarta/). 
+
+Sekian, terima kasih.
