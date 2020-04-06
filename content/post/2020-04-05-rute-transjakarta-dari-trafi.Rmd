@@ -16,7 +16,7 @@ _Mari kita plesiran ke blog para jagoan!_
 
 Entah kenapa saya tiba-tiba ingat blognya Mas [Rasyid Ridha](http://rasyidridha.com/) yang masih saja belum aktif diisi lagi sampai sekarang. Mungkin masih sibuk dengan kegemaran lainnya. Atau jangan-jangan pindah web???
 
-Melalui eksplorasi sekadarnya, weezz.... langsung ketemu dengan repo [transjakarta](https://github.com/rasyidstat/transjakarta). Repo ini menyimpan kode-kode untuk eksplorasi data dalam menulis [sebuah artikel](http://rasyidridha.com/datakepo/rute-transjakarta/) bernuansa _transportist_. Data yang digunakan diperoleh dari [Traffi](https://www.trafi.com/id/jakarta/transjakarta).
+Melalui eksplorasi sekadarnya, weezz.... langsung ketemu dengan repo [transjakarta](https://github.com/rasyidstat/transjakarta). Repo ini menyimpan kode-kode untuk eksplorasi data dalam menulis [sebuah artikel](http://rasyidridha.com/datakepo/rute-transjakarta/) bernuansa _transportist_. Data yang digunakan diperoleh dari [Trafi](https://www.trafi.com/id/jakarta/transjakarta).
 
 Supaya saya jadi nggak cuma _repost_ doang di sini, tulisan ini akan mengupas dan mengulas cara-cara Mas Rasyid mengolah data rute TransJakarta. Tentunya dari sudut pandang saya sebagai orang yang sedang mempelajari kode-kodenya Mas Rasyid.
 
@@ -31,7 +31,7 @@ Mari kita demokan di sini sambil belajar...
 
 ## Get the Data
 
-Pertama, Mas Rasyid menggunakan library `jsonlite` dan library terkenal `tidyverse` untuk _collect the data_. Format teks dari data yang disediakan oleh Traffi memang teks javascript json.
+Pertama, Mas Rasyid menggunakan library `jsonlite` dan library terkenal `tidyverse` untuk _collect the data_. Format teks dari data yang disediakan oleh Trafi memang teks javascript json.
 
 Saya coba sedikit-sedikit menyesuaikan atau edit kode-kodenya Mas Rasyid supaya kita bisa pelajari bersama secara lebih jelas dan deskriptif.
 
@@ -190,9 +190,9 @@ glimpse(df_route)
 
 Kolom `shape` (paling akhir) kelihatannya agak aneh ya?
 
-Itu karena data ini merupakan data geometri yang di-_encode_ menjadi baris karakter melalui [Google's polyline algorithm](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) yang digunakan Traffi.
+Itu karena data ini merupakan data geometri yang di-_encode_ menjadi baris karakter melalui [Google's polyline algorithm](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) yang digunakan Trafi.
 
-Kita bisa konversi ke data yang lebih terbaca. Kita pakai bantuan library `googleway` dan `sf`.
+Kita bisa konversi ke format data [simple features](https://r-spatial.github.io/sf/). Kita pakai bantuan library `googleway` dan `sf`.
 
 ```{r}
 # fungsi untuk konversi tipe geometri data GIS-nya
@@ -230,13 +230,13 @@ ggplot() +
   guides(color = FALSE)
 ```
 
-Ini adalah rute yang beroperasi pada tanggal tulisan ini diperbarui. Sepertinya lebih sedikit dari yang seharusnya. Bahkan kalau dibandingkan dengan rute pada tanggal 25 Juni 2018 di blog Mas Rasyid ([gambar](http://rasyidridha.com/images/datakepo/tj/tj_route.png)), rute hari ini tetap lebih sedikit.
+Ini adalah rute yang beroperasi pada tanggal tulisan ini dibuat (6 April 2020). Sepertinya lebih sedikit dari yang seharusnya. Bahkan kalau dibandingkan dengan rute pada tanggal 25 Juni 2018 di blog Mas Rasyid ([gambar](http://rasyidridha.com/images/datakepo/tj/tj_route.png)), rute hari ini tetap lebih sedikit.
 
 Contoh lain rute yang dibuat pada 7 November 2019, sangat banyak.
 
 <img src = "https://raw.githubusercontent.com/rasyidstat/transjakarta/master/figs/tj_route_20191107.png">
 
-Mungkin ini operasi khusus selama penyebaran pandemi Covid-19.
+Mungkin rute ini lebih sedikit karena pembatasa operasional BRT Transjakarta khususnya selama penyebaran pandemi Covid-19. Sesuai beritanya.
 
 <blockquote class="twitter-tweet"><p lang="in" dir="ltr">Sahabat TiJe, lihat informasi rute Transjakarta yang beroperasi per 6 April 2020 pada gambar di bawah ini. Harap selalu menerapkan social dan physical distancing saat berada di lingkungan Transjakarta. <a href="https://twitter.com/hashtag/TiJeTanggapCorona?src=hash&amp;ref_src=twsrc%5Etfw">#TiJeTanggapCorona</a> <a href="https://t.co/tvMGnQWos0">pic.twitter.com/tvMGnQWos0</a></p>&mdash; Transportasi Jakarta (@PT_Transjakarta) <a href="https://twitter.com/PT_Transjakarta/status/1247011146676256770?ref_src=twsrc%5Etfw">April 6, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -332,7 +332,7 @@ Kalau mau disimpan datanya, mari simpan...
 saveRDS(transjakarta_route, "data/tj_route.rds")
 ```
 
-## Visualisasi
+## Visualization
 
 ```{r visualisasi}
 tj <- transjakarta_route %>% 
