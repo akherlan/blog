@@ -7,6 +7,7 @@ categories:
   - tutorial
   - belajar
 tags:
+  - rstats
   - data
   - transportasi
   - transjakarta
