@@ -38,6 +38,8 @@ Kondisinya secara fisik masih bagus. Cuma engsel kanan yang bunyi _krek-krek_ sa
 
 ![TrackPoint](../post/2020-04-07-lenovo-thinkpad-x240_files/trackpoint.jpg)
 
+![dua baterai](../post/2020-04-07-lenovo-thinkpad-x240_files/baterai.jpg)
+
 ## Kebiasaan
 
 Saya agak _kagok_ dengan papan ketiknya karena belum terbiasa. Bukan ketika mengetik huruf dan angka, tapi ketika menggunakan tombol-tombol seperti:
@@ -53,8 +55,8 @@ Saya agak _kagok_ dengan papan ketiknya karena belum terbiasa. Bukan ketika meng
   - `#` tertulis `£` pada tombol numerik `3 + Shift`
   - `"` tertulis `@` pata tombol `' + Shift`, sekitar `Enter`
 
-| Tombol 	| +Shift 	| Muncul 	| +Shift 	|             Letak             	|
-|:------:	|:------:	|:------:	|:------:	|:-----------------------------:	|
+| Tekan 	|  +Shft 	| Muncul 	|  +Shft 	|             Letak             	|
+|:------:	|:------:	|:------:	|:------:	|:------------------------------:	|
 |    \   	|   \|   	|    <   	|    >   	|    di antara `Shift` dan `Z`   	|
 |    ~   	|    #   	|    \   	|   \|   	| di samping `Enter` (`Return`) 	|
 |        	|        	|        	|        	|                               	|
@@ -158,5 +160,13 @@ Perangkat lainnya...
 02:00.0 Unassigned class [ff00]: Realtek Semiconductor Co., Ltd. RTS5227 PCI Express Card Reader (rev 01)
 03:00.0 Network controller: Intel Corporation Wireless 7260 (rev 83)
 ```
+
+## Sistem operasi
+
+Meskipun tertulis di _casing_ bahwa mesin laptop Lenovo ini dilengkapi dengan Windows 7 sebagai sistem operasi original, tetapi penjual mendistribusikan mesin second ini dengan sistem operasi Windows 10.
+
+![bagian papan ketik](../post/2020-04-07-lenovo-thinkpad-x240_files/dalam.jpg)
+
+Tetap saja. Satu hari setelah cek keadaan `hardware` sebisanya, untuk memastikan kondisi benar-benar baik dan tidak cacat, saya langsung instal sistem operasi [Xubuntu 18.04](https://xubuntu.org/).
 
 Yaa... Begitulah...
