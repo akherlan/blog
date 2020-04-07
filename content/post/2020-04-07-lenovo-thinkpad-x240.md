@@ -9,7 +9,7 @@ tags:
   - blogging
 ---
 
-<img src="/post/2020-04-07-lenovo-thinkpad-x240_files/logo_thinkpad.jpg" alt="IBM ThinkPad" width="100%"/>
+![IBM ThinkPad](../post/2020-04-07-lenovo-thinkpad-x240_files/logo_thinkpad.jpg)
 
 Pekan lalu saya memesan mesin baru, Lenovo ThinkPad X240. _Secondhand_. Harganya lumayan miring juga dengan spesifikasi nggak jelek-jelek amat:
 
@@ -28,7 +28,7 @@ Pekan lalu saya memesan mesin baru, Lenovo ThinkPad X240. _Secondhand_. Harganya
 
 Kondisinya secara fisik masih bagus. Cuma engsel kanan yang bunyi _krek-krek_ saat dibuka-tutup. Juga baterainya agak sedikit longgar/goyang. Tapi jarang ada kelihatan lecet.
 
-<img src="/post/2020-04-07-lenovo-thinkpad-x240_files/bagian-atas.jpg" alt="Bagian atas" width="100%"/>
+![Bagian atas](../post/2020-04-07-lenovo-thinkpad-x240_files/bagian-atas.jpg)
 
 ## Kelebihan
 
@@ -36,7 +36,7 @@ Kondisinya secara fisik masih bagus. Cuma engsel kanan yang bunyi _krek-krek_ sa
 - _Gesture allowed_ pada TrackPad, ketika dicoba di Windows 10 (OS bawaan toko) dan Xubuntu 18.04, tidak ada bedanya, sama-sama yahood!
 - TrackPoint, entah ini kelebihan atau bukan karena sebenarnya jarang saya pakai, ini juga berfungsi dengan baik di Xubuntu 18.04.
 
-<img src="/post/2020-04-07-lenovo-thinkpad-x240_files/trackpoint.jpg" alt="TrackPoint" width="100%"/>
+![TrackPoint](../post/2020-04-07-lenovo-thinkpad-x240_files/trackpoint.jpg)
 
 ## Kebiasaan
 
@@ -59,27 +59,52 @@ Saya agak _kagok_ dengan papan ketiknya karena belum terbiasa. Bukan ketika meng
 |    ~   	|    #   	|    \   	|   \|   	| di samping `Enter` (`Return`) 	|
 |        	|        	|        	|        	|                               	|
 
-<img src="/post/2020-04-07-lenovo-thinkpad-x240_files/Fn+Ctrl.jpg" alt="Fn, Ctrl" width="100%"/>
+![`Fn`, `Ctrl`](../post/2020-04-07-lenovo-thinkpad-x240_files/Fn+Ctrl.jpg)
 
 Selain itu malah jadi sangat nyaman:
 
 - `PgUp` dan `PgDn` yang dekat dengan arrow, memudahkan saat membaca dan skrol halaman.
+  ![Arrow, PgUp, PgDn](../post/2020-04-07-lenovo-thinkpad-x240_files/arrow.jpg)
 - `Alt` kanan, `PrtSc`, dan `Ctrl` kanan yang berdekatan sehingga mudah untuk ambil tangkapan layar. Saya terbiasa dengan `shortcut` kombinasi tombol-tombol ini.
-
-<img src="/post/2020-04-07-lenovo-thinkpad-x240_files/arrow.jpg" alt="Arrow, PgUp, PgDn" width="100%"/>
-
-<img src="/post/2020-04-07-lenovo-thinkpad-x240_files/ptscn.jpg" alt="Tombol-tombol shortcut tangkapan layar" width="100%"/>
+  ![Tombol-tombol shortcut tangkapan layar](../post/2020-04-07-lenovo-thinkpad-x240_files/ptscn.jpg)
 
 ## Informasi Hardware
 
-### Prosesor & memori
+### Prosesor
 
 ```{bash}
-~$ cat /proc/cpuinfo
 ~$ lscpu
 ```
 
-### Audio & monitor
+```
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              4
+On-line CPU(s) list: 0-3
+Thread(s) per core:  2
+Core(s) per socket:  2
+Socket(s):           1
+NUMA node(s):        1
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               69
+Model name:          Intel(R) Core(TM) i5-4300U CPU @ 1.90GHz
+Stepping:            1
+CPU MHz:             936.269
+CPU max MHz:         2900,0000
+CPU min MHz:         800,0000
+BogoMIPS:            4988.62
+Virtualization:      VT-x
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            256K
+L3 cache:            3072K
+NUMA node0 CPU(s):   0-3
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm ida arat pln pts md_clear flush_l1d
+```
+
+### Monitor & audio
 
 ```{bash}
 ~$ xdpyinfo | grep "dimensions:"
