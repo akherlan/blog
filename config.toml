@@ -6,7 +6,7 @@ author = "Andi"
 theme = "hugo-lithium"
 enableEmoji = true
 googleAnalytics = ""
-disqusShortname = ""
+disqusShortname = "akherlan"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [permalinks]
