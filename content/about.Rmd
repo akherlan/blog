@@ -3,11 +3,9 @@ title: Saya Andi.
 author: ''
 date: []
 slug: about
-categories: []
-tags: []
 ---
 
-Telegram: [akherlan](https://t.me/akherlan) | Twitter: [terusterang__](https://twitter.com/terusterang__) | Github: [akherlan](https://github.com/akherlan)
+Telegram: [akherlan](https://t.me/akherlan) | Twitter: [terusterang__](https://twitter.com/terusterang__)
 
 # Cerita dari 2016
 
