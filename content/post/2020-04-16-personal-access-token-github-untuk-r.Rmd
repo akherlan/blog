@@ -44,12 +44,16 @@ Berikutnya kita kembali ke jendela RStudio lagi, lalu gunakan perintah berikut u
 usethis::edit_r_environ()
 ```
 
+![edit_r_environ](/post/2020-04-16-personal-access-token-github-untuk-r_files/gh_pat_1.gif)
+
 Akan terbuka berkas `.Renviron` yang berada di direktori home. Jika tidak punya, berarti `usethis` akan membuatkan berkas ini untukmu. Ketikkan teks berikut di editor skrip yang terbuka:
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
 GITHUB_PAT=xxxxxxxxxxxxxx
 # ganti xxxxxxxxxxxxxx dengan token yang tadi di copas dari Github
 ```
+
+![renviron file](/post/2020-04-16-personal-access-token-github-untuk-r_files/gh_pat_2.gif)
 
 Tanpa tanda kutip ya...
 
