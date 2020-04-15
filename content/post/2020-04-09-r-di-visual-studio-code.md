@@ -13,7 +13,7 @@ tags:
 
 OK! Saya akui saya terlena dengan perbincangan tentang menggunakan editor VS Code dari Microsoft untuk bekerja dengan R, di twitter.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">👏VS <a href="https://twitter.com/code?ref_src=twsrc%5Etfw">@code</a> is now an amazing IDE for R<br><br>The latest improvements to the language server protocol implementation for <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> offer code completion, go to definitions, info on hover and more. <br><br>I have not been this excited for new R developments in a while:<br>🔗<a href="https://t.co/hWMoLwOzi1">https://t.co/hWMoLwOzi1</a> <a href="https://t.co/X8S5xGffPM">pic.twitter.com/X8S5xGffPM</a></p>&mdash; Jozef Hajnala (@jozefhajnala) <a href="https://twitter.com/jozefhajnala/status/1204496900461912068?ref_src=twsrc%5Etfw">December 10, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{{< tweet 1204496900461912068 >}}
 
 Berangkat dari tweet di atas, saya melakukan beberapa langkah instalasi di mesin linux saya untuk bisa ikutan dalam keseruan ini. Berikut...
 
