@@ -1,0 +1,108 @@
+---
+title: PostgreSQL dan RStudio
+author: Andi
+date: '2020-04-16'
+slug: postgresql-dan-rstudio
+categories:
+  - belajar
+  - tutorial
+tags:
+  - basisdata
+  - postgresql
+  - rstats
+---
+
+Saya sedang belajar mengelola data dalam sebuah basisdata. Sebab ketertarikan saya dengan bidang geospasial, saya coba untuk mempelajari DBMS terkenal untuk ini, yaitu PostgreSQL dengan ekstensi PostGIS.
+
+Singkat cerita, saya sudah melakukan instalasi dan pengaturan basis data postgres + postgis di komputer saya. Selanjutnya saya ingin coba membuat koneksi untuk akses basisdata melalui RStudio. Saya merasa agak sedikit sombong karena sebelumnya sudah sukses dengan koneksi PostgreSQL lewat QGIS.
+
+Ada [dua cara](https://db.rstudio.com/databases/postgresql/) membuat koneksi dari R untuk mengakses basis data:
+
+- menggunakan paket `odbc` dengan `DBI`
+- menggunakan paket `RPostgres`
+
+Untuk saat ini saya menggunakan cara yang pertama. Langkah yang saya lakukan adalah:
+
+### 1. Setting odbc drivers di komputer linux
+
+```{bash eval=FALSE, include=TRUE}
+sudo apt update 
+sudo apt install unixodbc unixodbc-dev 
+sudo apt install odbc-postgresql 
+```
+
+### 2. Periksa hasil instalasi kita
+
+Beberapa berkas yang perlu kita tahu dan butuhkan untuk menunjang pengaturan dan kerja paket `odbc` di R diantaranya berkas `odbcinst.ini` dan `odbc.ini`. Di mana mereka?
+
+Kita bisa gunakan perintah berikut di terminal:
+
+```{bash eval=FALSE, include=TRUE}
+odbcinst -j
+```
+
+![](/post/2020-04-16-postgresql-dan-rstudio_files/odbcinst_j.png)
+
+Atau dengan cara lain, misalnya:
+
+```{bash eval=FALSE, include=TRUE}
+locate odbcinst.ini
+locate odbc.ini
+```
+
+![](/post/2020-04-16-postgresql-dan-rstudio_files/locate_odbc.png)
+
+Akan ditampilkan tempat berkas-berkas itu tersimpan.
+
+Kemudian coba kita cek apa isi dari berkas `odbcinst.ini`. Berikut isinya:
+
+![](/post/2020-04-16-postgresql-dan-rstudio_files/print_odbcinst.png)
+
+Sedangkan untuk berkas `.odbc.ini`, sepengalaman saya saat _fresh-install_ tidak ada isinya alias masih kosong. Berikutnya kita perlu isi itu.
+
+### 3. Sunting berkas odbc.ini
+
+Berkas ini ada di dua tempat, seperti sudah kita periksa sebelumnya.
+
+`/etc/odbc.ini` menyimpan pengaturan yang bisa digunakan secara global. Artinya bisa diakses oleh semua user di komputer terinstal, tetapi untuk pengaturannya kita membutuhkan akses root.
+
+Sedangkan `~/.odbc.ini` hanya untuk user tertentu (sesuai lokasi home punya user mana). Kita tidak perlu root untuk ini. Berkasnya disembunyikan di direktori home.
+
+Sunting berkas `.odbc.ini` milik user menggunakan text editor `nano` dengan perintah di terminal:
+
+```{bash eval=FALSE, include=TRUE}
+nano ~/.odbc.ini
+```
+
+Isikan detail seperti berikut:
+
+```{}
+[PostgreSQL]
+Driver              = PostgreSQL Driver
+Database            = namaDbKamu
+Servername          = localhost
+UserName            = usernamekamu
+Password            = passwordSayaKamuGabolehTau
+Port                = 5432
+```
+
+![](/post/2020-04-16-postgresql-dan-rstudio_files/isi_odbc_ini.png)
+
+Ganti nilai pada bagian `Database` dan `UserName`, juga pada bagian `Password`, sesuai dengan pengaturan basis data PostgreSQL milik teman-teman.
+
+## 4. Menginstal paket odbc dan DBI di R
+
+```{r eval=FALSE, include=TRUE}
+install.packages("odbc")
+install.packages("DBI")
+```
+
+Kemudian restart R session.
+
+Koneksi sudah bisa digunakan...
+
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/z5tZ1C9SVyo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Sekian.
+
+**Ref:** https://db.rstudio.com/best-practices/drivers/#linux-debian-ubuntu
