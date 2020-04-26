@@ -25,7 +25,7 @@ Langkah-langkah yang saya pakai secara teknis adalah seperti berikut:
 $ mkdir databoard && cd databoard
 $ git clone git@github.com:akherlan/databoard.git master
 ```
-Tautatan itu copas dari repo di bagian ini.
+Tautan repo copas dari di bagian ini.
 
 ![](/post/2020-04-26-pakai-branch-untuk-github-pages_files/clone.png)
 
@@ -68,7 +68,7 @@ Saya membuat direktori rproj (sebagai _child_ dari direktori databoard) untuk me
 
 Mengapa tidak membuat alamat render langsung ditujukan ke direktori gh-pages? Karena nanti rekaman git-nya hilang. Rmarkdown akan mengganti/menimpa direktori gh-pages yang ada dan mengisinya dengan berkas-berkas baru hasil render.
 
-Sebagai opsi, juga bisa gunakan version control pada direktori "rproj" ini, kalau diperlukan.
+Sebagai opsi, juga bisa gunakan version control pada direktori rproj ini, kalau diperlukan.
 
 **8. Lakukan commit dan push dari branch "gh-pages"**
 
