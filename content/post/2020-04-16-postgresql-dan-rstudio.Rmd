@@ -90,7 +90,7 @@ Port                = 5432
 
 Ganti nilai pada bagian `Database` dan `UserName`, juga pada bagian `Password`, sesuai dengan pengaturan basis data PostgreSQL milik teman-teman.
 
-## 4. Menginstal paket odbc dan DBI di R
+### 4. Menginstal paket odbc dan DBI di R
 
 ```{r eval=FALSE, include=TRUE}
 install.packages("odbc")
