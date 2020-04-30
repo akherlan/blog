@@ -1,11 +1,10 @@
 ---
-title: Saya Andi.
-author: ''
+title: Saya Andi
 date: []
 slug: about
 ---
 
-Telegram: [akherlan](https://t.me/akherlan) | Twitter: [terusterang__](https://twitter.com/terusterang__)
+[Telegram](https://t.me/akherlan) | [Twitter](https://twitter.com/terusterang__)
 
 # Cerita dari 2016
 

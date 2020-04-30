@@ -20,6 +20,20 @@
     <div class="article-content">
       {{ .Content }}
     </div>
+    
+      {{ if eq .Section "post" }}
+    <span class="article-meta">
+      {{ range $i := (slice "categories" "tags") }}
+      {{ with ($.Param $i) }}
+      {{ $i | title }}:
+      {{ range $k := . }}
+      <a href='{{ relURL (print "/" $i "/" $k | urlize) }}'>{{ $k }}</a>
+      {{ end }}<br>
+      {{ end }}
+      {{ end }}<br>
+    </span>
+    {{ end }}
+
   </article>
 
   {{ partial "disqus.html" .}}

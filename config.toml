@@ -10,14 +10,11 @@ disqusShortname = "andikh"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [permalinks]
-    post = "/blog/:slug/"
+    post = "/notes/:slug/"
 
 [[menu.main]]
-    name = "about"
+    name = "About"
     url = "/about/"
-[[menu.main]]
-    name = "tags"
-    url = "/tags/"
 
 [params]
     description = "Catatan bukan blog"
