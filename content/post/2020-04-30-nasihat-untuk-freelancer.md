@@ -10,7 +10,7 @@ tags:
   - kerja
 ---
 
-Saya masih punya minat jadi _freelancer_ alias pekerja serabutan. Tentu setiap pekerjaan punya porsi sendiri-sendiri atas tanggung jawab kerja, begitu pula pekerja paruh waktu, tetap bukan kerja seenaknya. Saya sadar itu.
+Saya masih punya minat jadi _freelancer_ alias pekerja serabutan. Tentu setiap pekerjaan punya porsi sendiri-sendiri atas tanggung jawab kerja, begitu pula pekerja lepas maupun paruh waktu, tetap bukan kerja seenaknya. Saya sadar itu.
 
 Sebagai pemula atau orang bilang _newbie_, saya harus banyak belajar. Pada catatan ini barangkali saya ingin kumpulkan berbagai nasihat dari senior. Akan diperbarui secara berkala. Semoga berkenan.
 
