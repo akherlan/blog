@@ -25,11 +25,11 @@ Langkah-langkah yang saya pakai secara teknis adalah seperti berikut:
 $ mkdir databoard && cd databoard
 $ git clone git@github.com:akherlan/databoard.git master
 ```
-Tautan repo copas dari di bagian ini.
+Tautan repo copas dari bagian ini.
 
 ![](/post/2020-04-26-pakai-branch-untuk-github-pages_files/clone.png)
 
-**2. Gandakan repositori hasil clone** ke lokal tadi menjadi direktori gh-pages.
+**2. Gandakan hasil clone ke lokal tadi** menjadi direktori gh-pages.
 
 ```{bash}
 $ cp master gh-pages
