@@ -42,7 +42,7 @@ Cara instal:
 
 Ketika menginstal ternyata ada pesan error yang muncul:
 
-![terjadi galat](/post/2020-04-09-r-di-visual-studio-code_files/without-languageserver.png)
+![terjadi galat](../post/2020-04-09-r-di-visual-studio-code_files/without-languageserver.png)
 
 Ini terjadi karena saya belum instal library `languageserver` untuk R. Itulah mengapa saya juga harus melakukan...
 
@@ -60,7 +60,7 @@ install.packages("languageserver")
 
 Tunggu sampai selesai instal, ada beberapa dependensinya juga yang diperlukan. Cas-cis-cus...
 
-![instal pustaka languageserver](/post/2020-04-09-r-di-visual-studio-code_files/install-languageserver.png)
+![instal pustaka languageserver](../post/2020-04-09-r-di-visual-studio-code_files/install-languageserver.png)
 
 
 Terakhir, tutup dan buka kembali (restart) VS Code, biar afdhol.
@@ -69,6 +69,6 @@ Terakhir, tutup dan buka kembali (restart) VS Code, biar afdhol.
 
 _Autocompletion_ di VS Code untuk bahasa R.
 
-![berhasil](/post/2020-04-09-r-di-visual-studio-code_files/r-vscode.gif)
+![berhasil](../post/2020-04-09-r-di-visual-studio-code_files/r-vscode.gif)
 
 Sekian dulu.

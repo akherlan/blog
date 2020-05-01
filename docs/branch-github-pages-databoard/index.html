@@ -77,7 +77,7 @@
 <pre><code class="language-{bash}" data-lang="{bash}">$ mkdir databoard &amp;&amp; cd databoard
 $ git clone git@github.com:akherlan/databoard.git master
 </code></pre><p>Tautan repo copas dari bagian ini.</p>
-<p><img src="/post/2020-04-26-pakai-branch-untuk-github-pages_files/clone.png" alt=""></p>
+<p><img src="../post/2020-04-26-pakai-branch-untuk-github-pages_files/clone.png" alt=""></p>
 <p><strong>2. Gandakan hasil clone ke lokal tadi</strong> menjadi direktori gh-pages.</p>
 <pre><code class="language-{bash}" data-lang="{bash}">$ cp master gh-pages
 </code></pre><p><strong>3. Buat branch baru dengan nama &ldquo;gh-pages&rdquo;</strong> dari repo di direktori gh-pages yang nanti akan diunggah ke upstream &ldquo;origin/gh-pages&rdquo;.</p>
@@ -91,7 +91,7 @@ $ git checkout origin/gh-pages -b gh-pages
 </code></pre><p><strong>5. Hapus semua isi direktori gh-pages yang ada</strong> KECUALI direktori <strong>.git</strong></p>
 <p><strong>6. Buat proyek laman web statis di direktori lain</strong></p>
 <p>Saya membuat direktori rproj (sebagai <em>child</em> dari direktori databoard) untuk membangun laman statis ini karena saya membuatnya menggunakan Rmarkdown.</p>
-<p><img src="/post/2020-04-26-pakai-branch-untuk-github-pages_files/dir.png" alt="Jadi ada tiga child dir dalam parent dir databoard"></p>
+<p><img src="../post/2020-04-26-pakai-branch-untuk-github-pages_files/dir.png" alt="Jadi ada tiga child dir dalam parent dir databoard"></p>
 <p><strong>7. Copas hasil rendernya ke direktori gh-pages</strong> yang tadi sudah kosong.</p>
 <p>Mengapa tidak membuat alamat render langsung ditujukan ke direktori gh-pages? Karena nanti rekaman git-nya hilang. Rmarkdown akan mengganti/menimpa direktori gh-pages yang ada dan mengisinya dengan berkas-berkas baru hasil render.</p>
 <p>Sebagai opsi, juga bisa gunakan version control pada direktori rproj ini, kalau diperlukan.</p>
@@ -101,7 +101,7 @@ $ git commit -m &quot;commit pertama untuk gh-pages&quot;
 $ git push origin gh-pages
 </code></pre><p>Awas itu setelah <code>add</code> ada titiknya.</p>
 <p><strong>9. Atur agar Github Pages dijalankan dari branch &ldquo;gh-pages&rdquo;</strong></p>
-<p><img src="/post/2020-04-26-pakai-branch-untuk-github-pages_files/gh-pages.png" alt=""></p>
+<p><img src="../post/2020-04-26-pakai-branch-untuk-github-pages_files/gh-pages.png" alt=""></p>
 <p>Sampai di sini, laman sudah online <a href="https://akherlan.github.io/databoard">di sini</a>.</p>
 <p>Berikutnya, direktori master bisa saya hapus/buang saja karena selanjutnya repositori databoard branch &ldquo;master&rdquo; langsung terhubung dan dikelola melalui paket <code>pins</code> di R.</p>
 <p>Saya melakukan ini setelah membaca dua panduan <a href="https://gist.github.com/chrisjacob/833223">ini(1)</a> dan <a href="https://gist.github.com/cobyism/4730490">ini(2)</a>. Mana tau juga bisa bermanfaat buat teman-teman.</p>

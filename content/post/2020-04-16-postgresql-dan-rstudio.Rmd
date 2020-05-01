@@ -41,7 +41,7 @@ Kita bisa gunakan perintah berikut di terminal:
 odbcinst -j
 ```
 
-![](/post/2020-04-16-postgresql-dan-rstudio_files/odbcinst_j.png)
+![](../post/2020-04-16-postgresql-dan-rstudio_files/odbcinst_j.png)
 
 Atau dengan cara lain, misalnya:
 
@@ -50,13 +50,13 @@ locate odbcinst.ini
 locate odbc.ini
 ```
 
-![](/post/2020-04-16-postgresql-dan-rstudio_files/locate_odbc.png)
+![](../post/2020-04-16-postgresql-dan-rstudio_files/locate_odbc.png)
 
 Akan ditampilkan tempat berkas-berkas itu tersimpan.
 
 Kemudian coba kita cek apa isi dari berkas `odbcinst.ini`. Berikut isinya:
 
-![](/post/2020-04-16-postgresql-dan-rstudio_files/print_odbcinst.png)
+![](../post/2020-04-16-postgresql-dan-rstudio_files/print_odbcinst.png)
 
 Sedangkan untuk berkas `.odbc.ini`, sepengalaman saya saat _fresh-install_ tidak ada isinya alias masih kosong. Berikutnya kita perlu isi itu.
 
@@ -86,7 +86,7 @@ Password            = passwordSayaKamuGabolehTau
 Port                = 5432
 ```
 
-![](/post/2020-04-16-postgresql-dan-rstudio_files/isi_odbc_ini.png)
+![](../post/2020-04-16-postgresql-dan-rstudio_files/isi_odbc_ini.png)
 
 Ganti nilai pada bagian `Database` dan `UserName`, juga pada bagian `Password`, sesuai dengan pengaturan basis data PostgreSQL milik teman-teman.
 

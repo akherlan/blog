@@ -28,7 +28,7 @@ Pekan lalu saya memesan mesin baru, Lenovo ThinkPad X240. _Secondhand_. Harganya
 
 Kondisinya secara fisik masih bagus. Cuma engsel kanan yang bunyi _krek-krek_ saat dibuka-tutup. Juga baterainya agak sedikit longgar/goyang. Tapi jarang ada kelihatan lecet.
 
-![Bagian atas](/post/2020-04-07-lenovo-thinkpad-x240_files/bagian-atas.jpg)
+![Bagian atas](../post/2020-04-07-lenovo-thinkpad-x240_files/bagian-atas.jpg)
 
 ## Kelebihan
 
@@ -36,9 +36,9 @@ Kondisinya secara fisik masih bagus. Cuma engsel kanan yang bunyi _krek-krek_ sa
 - _Gesture allowed_ pada TrackPad, ketika dicoba di Windows 10 (OS bawaan toko) dan Xubuntu 18.04, tidak ada bedanya, sama-sama yahood!
 - TrackPoint, entah ini kelebihan atau bukan karena sebenarnya jarang saya pakai, ini juga berfungsi dengan baik di Xubuntu 18.04.
 
-![TrackPoint](/post/2020-04-07-lenovo-thinkpad-x240_files/trackpoint.jpg)
+![TrackPoint](../post/2020-04-07-lenovo-thinkpad-x240_files/trackpoint.jpg)
 
-![dua baterai](/post/2020-04-07-lenovo-thinkpad-x240_files/baterai.jpg)
+![dua baterai](../post/2020-04-07-lenovo-thinkpad-x240_files/baterai.jpg)
 
 ## Kebiasaan
 
@@ -66,9 +66,9 @@ Saya agak _kagok_ dengan papan ketiknya karena belum terbiasa. Bukan ketika meng
 Selain itu malah jadi sangat nyaman:
 
 - `PgUp` dan `PgDn` yang dekat dengan arrow, memudahkan saat membaca dan skrol halaman.
-  ![Arrow, PgUp, PgDn](/post/2020-04-07-lenovo-thinkpad-x240_files/arrow.jpg)
+  ![Arrow, PgUp, PgDn](../post/2020-04-07-lenovo-thinkpad-x240_files/arrow.jpg)
 - `Alt` kanan, `PrtSc`, dan `Ctrl` kanan yang berdekatan sehingga mudah untuk ambil tangkapan layar. Saya terbiasa dengan `shortcut` kombinasi tombol-tombol ini.
-  ![Tombol-tombol shortcut tangkapan layar](/post/2020-04-07-lenovo-thinkpad-x240_files/ptscn.jpg)
+  ![Tombol-tombol shortcut tangkapan layar](../post/2020-04-07-lenovo-thinkpad-x240_files/ptscn.jpg)
 
 ## Informasi Hardware
 
@@ -165,7 +165,7 @@ Perangkat lainnya...
 
 Meskipun tertulis di _casing_ bahwa mesin laptop Lenovo ini dilengkapi dengan Windows 7 sebagai sistem operasi original, tetapi penjual mendistribusikan mesin second ini dengan sistem operasi Windows 10.
 
-![bagian papan ketik](/post/2020-04-07-lenovo-thinkpad-x240_files/dalam.jpg)
+![bagian papan ketik](../post/2020-04-07-lenovo-thinkpad-x240_files/dalam.jpg)
 
 Tetap saja. Satu hari setelah cek keadaan `hardware` sebisanya, untuk memastikan kondisi benar-benar baik dan tidak cacat, saya langsung instal sistem operasi [Xubuntu 18.04](https://xubuntu.org/).
 

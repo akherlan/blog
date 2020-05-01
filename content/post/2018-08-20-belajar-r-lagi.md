@@ -1,10 +1,13 @@
 ---
 title: Belajar R Lagi
-author: andikh
+author: Andi
 date: '2018-08-20'
 slug: belajar-r-lagi
-categories: [belajar]
-tags: ["rstats", "program"]
+categories:
+  - belajar
+tags:
+  - rstats
+  - program
 ---
 
 ## Instal Program R

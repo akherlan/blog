@@ -174,7 +174,7 @@ Yah, begitu. Gampang bukan?
 
 Kalau teman-teman gak mau pakai R, mau pakai Excel saja! Mari bandingkan hasilnya.
 
-![Menghitung uji Chi-Square dalam worksheet](/post/2019-08-31-uji-chi-kuadrat-pada-data-hujan_files/chi-square-excel.png)
+![Menghitung uji Chi-Square dalam worksheet](../post/2019-08-31-uji-chi-kuadrat-pada-data-hujan_files/chi-square-excel.png)
 
 Demikian saya sampaikan. Sekian. Terima kasih.
 

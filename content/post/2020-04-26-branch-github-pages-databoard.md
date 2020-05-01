@@ -27,7 +27,7 @@ $ git clone git@github.com:akherlan/databoard.git master
 ```
 Tautan repo copas dari bagian ini.
 
-![](/post/2020-04-26-pakai-branch-untuk-github-pages_files/clone.png)
+![](../post/2020-04-26-pakai-branch-untuk-github-pages_files/clone.png)
 
 **2. Gandakan hasil clone ke lokal tadi** menjadi direktori gh-pages.
 
@@ -62,7 +62,7 @@ $ git branch -d master
 
 Saya membuat direktori rproj (sebagai _child_ dari direktori databoard) untuk membangun laman statis ini karena saya membuatnya menggunakan Rmarkdown.
 
-![Jadi ada tiga child dir dalam parent dir databoard](/post/2020-04-26-pakai-branch-untuk-github-pages_files/dir.png)
+![Jadi ada tiga child dir dalam parent dir databoard](../post/2020-04-26-pakai-branch-untuk-github-pages_files/dir.png)
 
 **7. Copas hasil rendernya ke direktori gh-pages** yang tadi sudah kosong.
 
@@ -82,7 +82,7 @@ Awas itu setelah `add` ada titiknya.
 
 **9. Atur agar Github Pages dijalankan dari branch "gh-pages"**
 
-![](/post/2020-04-26-pakai-branch-untuk-github-pages_files/gh-pages.png)
+![](../post/2020-04-26-pakai-branch-untuk-github-pages_files/gh-pages.png)
 
 Sampai di sini, laman sudah online [di sini](https://akherlan.github.io/databoard).
 
