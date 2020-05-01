@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://akherlan.github.io/blog/"
 publishdir = "docs"
 languageCode = "en-us"
 title = "Engineer of words"
