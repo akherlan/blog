@@ -9,7 +9,7 @@ tags:
   - blogging
 ---
 
-![IBM ThinkPad](/post/2020-04-07-lenovo-thinkpad-x240_files/logo_thinkpad.jpg)
+![IBM ThinkPad](../post/2020-04-07-lenovo-thinkpad-x240_files/logo_thinkpad.jpg)
 
 Pekan lalu saya memesan mesin baru, Lenovo ThinkPad X240. _Secondhand_. Harganya lumayan miring juga dengan spesifikasi nggak jelek-jelek amat:
 
@@ -61,7 +61,7 @@ Saya agak _kagok_ dengan papan ketiknya karena belum terbiasa. Bukan ketika meng
 |    ~   	|    #   	|    \   	|   \|   	| di samping `Enter` (`Return`) 	|
 |        	|        	|        	|        	|                               	|
 
-![`Fn`, `Ctrl`](/post/2020-04-07-lenovo-thinkpad-x240_files/Fn+Ctrl.jpg)
+![`Fn`, `Ctrl`](../post/2020-04-07-lenovo-thinkpad-x240_files/Fn+Ctrl.jpg)
 
 Selain itu malah jadi sangat nyaman:
 
