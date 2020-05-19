@@ -21,15 +21,15 @@
       {{ .Content }}
     </div>
     
-      {{ if eq .Section "post" }}
+    {{ if eq .Section "post" }}
     <span class="article-meta">
       {{ range $i := (slice "categories" "tags") }}
-      {{ with ($.Param $i) }}
+      <!-- {{ with ($.Param $i) }} -->
       {{ $i | title }}:
       {{ range $k := . }}
-      <a href='{{ relURL (print "/" $i "/" $k | urlize) }}'>{{ $k }}</a>
+      <a href='{{ relURL (print "../" $i "/" $k | urlize) }}'>{{ $k }}</a>
       {{ end }}<br>
-      {{ end }}
+      <!-- {{ end }} -->
       {{ end }}<br>
     </span>
     {{ end }}
