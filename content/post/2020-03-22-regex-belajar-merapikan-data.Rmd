@@ -27,7 +27,7 @@ Begini jadinya...
 
 ```{r impor data back, include=FALSE}
 # impor data dari berkas csv
-files <- fs::dir_ls("~/R/gitr/data/datagempa/", regexp = "[0-9]{4}\\.csv")
+files <- fs::dir_ls("~/R//repo/blog/data/datagempa/", regexp = "[0-9]{4}\\.csv")
 gempa <- purrr::map_dfr(files, read.csv)
 ```
 
@@ -46,7 +46,7 @@ gempa <- purrr::map_dfr(files, read.csv)
 
 Saya memerlukan regex ini karena di dalam direktori "datagempa" ada berkas `csv` lain yang bukan termasuk data yang ingin saya gabungkan. Dan pola namanya gampang, yaitu berupa tahun.
 
-![Daftar berkas](/post/2020-03-22-regex-belajar-merapikan-data_files/daftar-datagempa.png){width=100%}
+![Daftar berkas](../post/2020-03-22-regex-belajar-merapikan-data_files/daftar-datagempa.png){width=100%}
 
 Setelah itu rapikan sedikit, karena ada beberapa baris yang tidak perlu.
 

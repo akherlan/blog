@@ -53,7 +53,7 @@ Ternyata ada dua KFC yang koordinatnya berbeda!
 
 Ketika saya hitung jaraknya di web [gps-coordinates.org](https://gps-coordinates.org/distance-between-coordinates.php), jarang antar KFC's itu ~3km!
 
-![](/post/2020-03-26-bermain-dengan-data-google-maps_files/kfc_distance.png){width=100%}
+![](../post/2020-03-26-bermain-dengan-data-google-maps_files/kfc_distance.png){width=100%}
 
 Ini tidak bisa dibiarkan.
 
@@ -179,7 +179,7 @@ map <- readRDS("data/gadm36_IDN_1_sf.rds")
 ```
 
 ```{r map data back, include=FALSE}
-map <- readRDS("~/R/gitR/data/gadm36_IDN_1_sf.rds")
+map <- readRDS("~/repo/blog/data/gadm36_IDN_1_sf.rds")
 ```
 
 
@@ -225,6 +225,6 @@ ggplot(data = google_maps_visited_2019) +
   ease_aes("linear")
 ```
 
-![](/post/2020-03-26-bermain-dengan-data-google-maps_files/perjalanan.gif)
+![](../post/2020-03-26-bermain-dengan-data-google-maps_files/perjalanan.gif)
 
 Sekian dulu.

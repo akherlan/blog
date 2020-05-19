@@ -34,12 +34,12 @@ tags:
 <p>Berikut untuk memuat library:</p>
 <pre class="r"><code>library(&quot;jsonlite&quot;)
 library(&quot;tidyverse&quot;)</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
 ## ✓ tibble  3.0.0     ✓ dplyr   0.8.5
 ## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
 ## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ──────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter()  masks stats::filter()
 ## x purrr::flatten() masks jsonlite::flatten()
 ## x dplyr::lag()     masks stats::lag()</code></pre>
@@ -119,7 +119,7 @@ df_tj &lt;- df_tj %&gt;%
 <pre class="r"><code>library(&quot;googleway&quot;)
 library(&quot;stringr&quot;)
 library(&quot;sf&quot;)</code></pre>
-<pre><code>## Linking to GEOS 3.7.1, GDAL 2.4.2, PROJ 5.2.0</code></pre>
+<pre><code>## Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 7.0.0</code></pre>
 <p>Kita akan melakukan transformasi data.frame <code>df_tj</code>. Langkah-langkah yang dilakukan adalah:</p>
 <ol style="list-style-type: decimal">
 <li>Menambah kolom baru dengan nama <code>halte_detail</code> dan <code>route</code>, sekaligus menghilangkan kolom <code>route_info</code>.</li>
@@ -207,7 +207,7 @@ df_route &lt;- df_route %&gt;%
                    direction == 1),
           aes(color = route_name)) +
   guides(color = FALSE)</code></pre>
-<p><img src="/post/2020-04-05-rute-transjakarta-dari-trafi_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="/blog/post/2020-04-05-rute-transjakarta-dari-trafi_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Ini adalah rute yang beroperasi pada tanggal tulisan ini dibuat (6 April 2020). Sepertinya lebih sedikit dari yang seharusnya. Bahkan kalau dibandingkan dengan rute pada tanggal 25 Juni 2018 di blog Mas Rasyid (<a href="http://rasyidridha.com/images/datakepo/tj/tj_route.png">gambar</a>), rute hari ini tetap lebih sedikit.</p>
 <p>Contoh lain rute yang dibuat pada 7 November 2019, sangat banyak.</p>
 <p><img src = "https://raw.githubusercontent.com/rasyidstat/transjakarta/master/figs/tj_route_20191107.png"></p>
@@ -245,7 +245,7 @@ transjakarta_route</code></pre>
 ## geometry type:  LINESTRING
 ## dimension:      XY
 ## bbox:           xmin: 106.7054 ymin: -6.3102 xmax: 106.9534 ymax: -6.10947
-## CRS:            EPSG:4326
+## geographic CRS: WGS 84
 ## # A tibble: 222 x 11
 ##    transport_id schedule_id corridor_id corridor_name corridor_color route_id
 ##    &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;   
@@ -279,7 +279,7 @@ transjakarta_route[,c(3, 7:8, 12:14)]</code></pre>
 ## geometry type:  LINESTRING
 ## dimension:      XY
 ## bbox:           xmin: 106.7054 ymin: -6.3102 xmax: 106.9534 ymax: -6.10947
-## CRS:            EPSG:4326
+## geographic CRS: WGS 84
 ## # A tibble: 222 x 7
 ##    corridor_id route_name direction     n is_main is_main_reverse
 ##    &lt;chr&gt;       &lt;chr&gt;          &lt;int&gt; &lt;int&gt; &lt;lgl&gt;   &lt;lgl&gt;          
@@ -354,7 +354,7 @@ ggplot() +
   labs(title = &quot;Rute Pelayanan TransJakarta&quot;,
        subtitle = &quot;Di tengah pandemi Covid-19&quot;,
        caption = &quot;sumber: trafi.com\ntanggal: 6 April 2020&quot;)</code></pre>
-<p><img src="/post/2020-04-05-rute-transjakarta-dari-trafi_files/figure-html/visualisasi-1.png" width="672" /></p>
+<p><img src="/blog/post/2020-04-05-rute-transjakarta-dari-trafi_files/figure-html/visualisasi-1.png" width="672" /></p>
 <p>Untuk eksplorasi rute terpanjang dan terpendek dari pelayanan BRT TransJakarta, teman-teman bisa baca tulisan Mas Rasyid tentang eksplorasi rute TransJakarta menggunakan library <code>sf</code> di <a href="http://rasyidridha.com/datakepo/rute-transjakarta/">blognya</a>.</p>
 <p>Sekian, terima kasih.</p>
 </div>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+<title>R di Android dengan Termux - Engineer of words</title>
+<meta property="og:title" content="R di Android dengan Termux - Engineer of words">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dark.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/blog/css/fonts.css" media="all">
+<link rel="stylesheet" href="/blog/css/main.css" media="all">
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/blog/" class="nav-logo">
+    <img src="/blog/images/logo.png"
+         width="50"
+         height="50"
+         alt="kucing">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/blog/about/">About</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">3 min read</span>
+    
+
+    <h1 class="article-title">R di Android dengan Termux</h1>
+
+    
+    <span class="article-date">
+      
+      Terakhir diperbarui 19 May 2020
+      
+    </span>
+    
+
+    <div class="article-content">
+      <p>Apakah mungkin menjalankan R di ponsel pintar Android? Bisa.</p>
+<p>Kita bisa menginstal dan menjalankan beberapa aplikasi yang tersedia di linux melalui termux. Salah satunya bahasa R.</p>
+<p>Termux merupakan terminal emulator di Android. Berjalan tanpa harus dalam mode root. Tersedia di <a href="https://play.google.com/store/apps/details?id=com.termux">PlayStore</a> dan juga <a href="https://f-droid.org/repository/browse/?fdid=com.termux">F-Droid</a>.</p>
+<p>Karena saya kadang-kadang pakai R dan sedang belajar juga, jadi saya ingin instal R di Android.</p>
+<h3 id="paket-manajemen-termux">Paket manajemen termux</h3>
+<p>Tidak semua paket di simpan dalam satu repositori termux, melainkan dibagi menjadi repo default (lebih stabil), dan selainnya ada repo untuk aplikasi root, unstable (dalam pengembangan), dan X11 (antarmuka grafis).</p>
+<p>Repositori termux yang menyimpan aplikasi R ada &ldquo;di luar&rdquo; atau mereka menyebutnya dengan &ldquo;repositori komunitas&rdquo;, bernama <code>its-pointless</code>. Cara menambahkannya ke daftar agak berbeda dengan repo termux yang <em>official</em>.</p>
+<p>Akhir tahun 2019 sampai awal-awal 2020 lalu akses ke repositori ini sempat hilang atau dicabut atau entahlah. Sedang dikembangkan mungkin? Namun sesaat sebelum saya menulis ini, repo itu sudah aktif kembali.</p>
+<p>Oh ya, termux ini pakai basis Debian/Ubuntu, jadi pakai manajemen paket APT dan DPKG. Tapi punya perintah bawaan sendiri, sih: <code>pkg &lt;command&gt;</code>. Bisa dilihat dengan <code>pkg help</code>. Gak tau deh, untuk hal itu <a href="https://wiki.termux.com/wiki/Main_Page">baca wiki</a>-nya saja ya&hellip;</p>
+<h3 id="menambah-repositori-its-pointless">Menambah repositori its-pointless</h3>
+<p>Pertama, kita perlu <code>curl</code> untuk unduh skrip bash yang sudah dibuatkan untuk kita. Jadi kita bisa menambah repo ini dengan mudah. Enak sekali jadi kita ini.</p>
+<p>Periksa apakah <code>curl</code> sudah terinstal.</p>
+<pre><code class="language-{bash}" data-lang="{bash}">$ dpkg -l | grep curl
+</code></pre><p>Kalau sudah didahului <strong>ii</strong> berarti sudah. Kalau belum, instal dengan cara berikut (kita tidak usah pakai mode root di termux):</p>
+<pre><code class="language-{bash}" data-lang="{bash}">$ pkg install curl
+</code></pre><p>Kalau sudah punya, kita akan unduh skrip dan menjalankannya dengan perintah:</p>
+<pre><code class="language-{bash}" data-lang="{bash}">$ curl -LO https://its-pointless.github.io/setup-pointless-repo.sh
+$ bash setup-pointless-repo.sh
+$ rm setup-pointless-repo.sh
+</code></pre><p>Repositori its-pointless selesai ditambahkan.</p>
+<h3 id="instal-r-di-android">Instal R di Android</h3>
+<p>Biasanya setelah menambahkan alamat repo baru, kita harus update daftar paketnya. Tapi tadi sudah dilakukan ketika menjalankan skrip. Jadi, daftar paket sudah diperbarui. Berikutnya tinggal instal R.</p>
+<pre><code class="language-{bash}" data-lang="{bash}">$ pkg install r-base
+</code></pre><p>Tunggu sampai selesai. Kemudian tes, apakah sudah berhasil.</p>
+<pre><code class="language-{bash}" data-lang="{bash}">$ R
+</code></pre><p>Kita juga bisa menginstal pustaka <code>tidyverse</code> di Android. Tapi saya belum tes untuk yang itu. Karena sayang ruang penyimpanannya. Bahkan mungkin di ponsel saya tidak cukup, karena termux menggunakan ruang penyimpanan internal untuk aplikasi.</p>
+<p>Selain <code>r-base</code>, its-pointless juga menyediakan <code>gcc-7</code>, <code>gfortran</code>, <code>octave</code>, <code>rustc</code>, <code>scipy</code>, dan beberapa <em>games</em>!</p>
+<p>Sampai di sini, selamat menggunakan R di Android.</p>
+<h3 id="video-demo">Video demo</h3>
+<p>PERINGATAN: 10 menit waktu Anda akan terbuang karena video ini membosankan apalagi kualitas rekaman dan cara merekam videonya buruk!</p>
+<iframe width="100%" height="480" src="https://www.youtube.com/embed/OlZI1qmZGZs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h3 id="tips">Tips</h3>
+<p>Izinkan termux mengakses penyimpanan:</p>
+<pre><code class="language-{bash}" data-lang="{bash}">$ termux-setup-storage
+</code></pre><p><a href="https://wiki.termux.com/wiki/Termux-setup-storage">lebih lanjut&hellip;</a></p>
+<p>Tampilkan tombol-tombol keyboard yang biasanya ada di komputer, tapi di ponsel tidak ada:</p>
+<pre><code class="language-{bash}" data-lang="{bash}">$ pkg install nano
+$ nano ~/.termux/termux.properties
+</code></pre><p>Copas teks berikut:</p>
+<pre><code>extra-keys = [ \
+ ['ESC','|','/','HOME','UP','END','PGUP','DEL'], \
+ ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN','BKSP'] \
+]
+</code></pre><p>Kemudian <code>Ctrl + S</code> dan <code>Ctrl + X</code> lalu restart sesi termux-nya.</p>
+<p><a href="https://wiki.termux.com/wiki/Touch_Keyboard">lebih lanjut&hellip;</a></p>
+<p><strong>Ref:</strong> <a href="https://wiki.termux.com/wiki/Package_Management">Manajemen Paket Termux</a></p>
+
+    </div>
+    
+      
+    <span class="article-meta">
+      
+      
+      Categories:
+      
+      <a href='/blog/categories/tutorial'>tutorial</a>
+      <br>
+      
+      
+      
+      Tags:
+      
+      <a href='/blog/tags/rstats'>rstats</a>
+      
+      <a href='/blog/tags/termux'>termux</a>
+      
+      <a href='/blog/tags/android'>android</a>
+      <br>
+      
+      <br>
+    </span>
+    
+
+  </article>
+
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+  
+  };
+  (function() {
+    var inIFrame = function() {
+      var iframe = true;
+      try { iframe = window.self !== window.top; } catch (e) {}
+      return iframe;
+    };
+    if (inIFrame()) return;
+    var d = document, s = d.createElement('script');
+    s.src = '//andikh.disqus.com/embed.js'; s.async = true;
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.id" target="_blank">CC BY-SA 4.0</a>
+          </li>
+          <li>
+            <a href="/blog/index.xml" type="application/rss+xml" target="_blank">Feed</a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sql.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/py.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/blog/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>

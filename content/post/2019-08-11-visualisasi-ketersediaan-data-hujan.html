@@ -27,8 +27,8 @@ library(dplyr)         # manipulasi data
 library(lubridate)     # manipulasi tanggal
 library(ggplot2)       # plot grafik</code></pre>
 <pre class="r"><code># memuat data
-load(file = &quot;~/R/hujan/prc/Raingauge/Precip.Rda&quot;)   # sesuaikan lokasi file
-Precip &lt;- filter(Precip, !is.na(tgl))               # menghilangkan hari yang kosong (aneh, ya?)
+load(file = &quot;~/R/repo/hujan/data/prc/Raingauge/Precip.Rda&quot;)   # sesuaikan lokasi file
+Precip &lt;- Precip[!is.na(Precip$tgl),]               # menghilangkan hari yang kosong (aneh, ya?)
 Precip$NamaStasiun &lt;- as.factor(Precip$NamaStasiun) # kategorisasi nama stasiun
 summary(Precip)</code></pre>
 <pre><code>##       NamaStasiun         LONx            LATy             tgl            
@@ -47,7 +47,7 @@ summary(Precip)</code></pre>
 ##  3rd Qu.: 10.000  
 ##  Max.   :290.000  
 ## </code></pre>
-<p>Data ini sudah saya rapikan sebelumnya. Agar teman-teman bisa mengakses data ini dari RStudio di komputer masing-masing, silakan sesuaikan nilai <code>&quot;~/R/hujan/prc/Raingauge/Precip.Rda&quot;</code> dengan direktori yang tepat sesuai lokasi teman-teman menyimpannya.</p>
+<p>Data ini sudah saya rapikan sebelumnya. Agar teman-teman bisa mengakses data ini dari RStudio di komputer masing-masing, silakan sesuaikan nilai <code>&quot;~/R/repo/hujan/data/precip.Rda&quot;</code> dengan direktori yang tepat sesuai lokasi teman-teman menyimpannya.</p>
 <p>Simpan dalam hati? Oh, jangan.</p>
 <p>Kembali ke laptop!</p>
 <p>Kalau diperhatikan dari hasil <code>summary</code> data, kolom tanggal (<strong>tgl</strong>) dan kolom curah hujan (<strong>prc</strong>) sudah tidak ada data kosong (<em>NA</em>) seperti pada <strong>(LONx, LATy)</strong>. Tetapi, sebenarnya ada beberapa tanggal yang data hujannya memang kosong. Hanya saja saya hilangkan.</p>
@@ -67,10 +67,10 @@ Precip %&gt;%
 </ol>
 <p>Kalau kita lihat struktur tabel <strong>p.mod</strong> itu seperti berikut.</p>
 <pre class="r"><code>str(p.mod)   # struktur data</code></pre>
-<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    6881 obs. of  3 variables:
-##  $ tgl   : Date, format: &quot;1996-01-01&quot; &quot;1996-01-02&quot; ...
-##  $ count : num  1 1 1 1 1 1 1 1 1 1 ...
-##  $ persen: num  5.26 5.26 5.26 5.26 5.26 ...</code></pre>
+<pre><code>## tibble [6,881 × 3] (S3: tbl_df/tbl/data.frame)
+##  $ tgl   : Date[1:6881], format: &quot;1996-01-01&quot; &quot;1996-01-02&quot; ...
+##  $ count : num [1:6881] 1 1 1 1 1 1 1 1 1 1 ...
+##  $ persen: num [1:6881] 5.26 5.26 5.26 5.26 5.26 ...</code></pre>
 <p>Kalau dilihat dalam bentuk tabel, seperti di bawah ini.</p>
 <pre class="r"><code>head(p.mod)   # menampilkan 6 rekaman data teratas</code></pre>
 <pre><code>## # A tibble: 6 x 3
@@ -104,7 +104,7 @@ mutate(bulan = month(tgl, label = TRUE, abbr = TRUE),
           strip.text=element_text(angle=0),
           strip.text.y=element_text(angle=0),
           panel.spacing = unit(0, &quot;lines&quot;))</code></pre>
-<p><img src="/post/2019-08-11-visualisasi-ketersediaan-data-hujan_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/blog/post/2019-08-11-visualisasi-ketersediaan-data-hujan_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Taraaaaa, jadi.</p>
 <p>Hhmmm… Data paling lengkap sepertinya pada 2009. Sepakat? Atau kita eliminasi saja stasiun hujannya. Hahaha… Pada 2013 terjadi ke-ompong-an. Kita pakai 2004-2009 saja, bagaimana?</p>
 <p>Terima kasih. Semoga bermanfaat.</p>

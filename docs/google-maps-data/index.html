@@ -88,8 +88,8 @@ library(lubridate)</code></pre>
 google_maps_visited_2019 &lt;- readRDS(&quot;data/data.rds&quot;)</code></pre>
 <p>Lihat-lihat dulu seperti apa isi datanya.</p>
 <pre class="r"><code>glimpse(google_maps_visited_2019)</code></pre>
-<pre><code>## Observations: 1,532
-## Variables: 6
+<pre><code>## Rows: 1,532
+## Columns: 6
 ## $ name  &lt;chr&gt; &quot;MTs Islamiyah Waled&quot;, &quot;MTs Islamiyah Waled&quot;, &quot;Babakan&quot;, &quot;Unive…
 ## $ lon   &lt;dbl&gt; 108.7018, 108.7018, 108.7187, 106.8416, 106.8519, 106.8344, 106…
 ## $ lat   &lt;dbl&gt; -6.925215, -6.925215, -6.860326, -6.354367, -6.349925, -6.33894…
@@ -105,7 +105,7 @@ google_maps_visited_2019 &lt;- readRDS(&quot;data/data.rds&quot;)</code></pre>
 ## # … with 1 more variable: dur &lt;Duration&gt;</code></pre>
 <p>Ternyata ada dua KFC yang koordinatnya berbeda!</p>
 <p>Ketika saya hitung jaraknya di web <a href="https://gps-coordinates.org/distance-between-coordinates.php">gps-coordinates.org</a>, jarang antar KFC’s itu ~3km!</p>
-<p><img src="/post/2020-03-26-bermain-dengan-data-google-maps_files/kfc_distance.png" style="width:100.0%" /></p>
+<p><img src="../post/2020-03-26-bermain-dengan-data-google-maps_files/kfc_distance.png" style="width:100.0%" /></p>
 <p>Ini tidak bisa dibiarkan.</p>
 <p>Bikin <code>id</code> unik untuk masing-masing nama tempat dengan komposisi koordinat.</p>
 <pre class="r"><code>place &lt;- google_maps_visited_2019 %&gt;% 
@@ -191,7 +191,7 @@ ggplot(sering) +
     panel.grid.major.y = element_blank(),
     panel.grid.minor.y = element_blank()
   )</code></pre>
-<p><img src="/post/2020-03-26-bermain-dengan-data-google-maps_files/figure-html/plot%20data-1.png" width="672" /></p>
+<p><img src="/blog/post/2020-03-26-bermain-dengan-data-google-maps_files/figure-html/plot%20data-1.png" width="672" /></p>
 <pre class="r"><code># plot tempat durasi singkat 
 ggplot(jarang) +
   geom_bar(aes(x = name, y = dur_menit), stat = &quot;identity&quot;) +
@@ -210,7 +210,7 @@ ggplot(jarang) +
     panel.grid.major.y = element_blank(),
     panel.grid.minor.y = element_blank()
   )</code></pre>
-<p><img src="/post/2020-03-26-bermain-dengan-data-google-maps_files/figure-html/plot%20data-2.png" width="672" /></p>
+<p><img src="/blog/post/2020-03-26-bermain-dengan-data-google-maps_files/figure-html/plot%20data-2.png" width="672" /></p>
 <p>Bagaimana untuk lihat sebaran lokasinya?</p>
 <p>Kita perlu data tambahan yaitu peta. Unduh peta <a href="https://gadm.org/download_country_v3.html">GADM</a>. Ubah bagian “data/gadm36_IDN_1_sf.rds” jadi lokasi penyimpanan data petamu.</p>
 <pre class="r"><code># data tambahan: peta dari GADM
@@ -231,7 +231,7 @@ ggplot(data = place_unique) +
     x = &quot;Bujur&quot;
   ) +
   theme_classic()</code></pre>
-<p><img src="/post/2020-03-26-bermain-dengan-data-google-maps_files/figure-html/plot%20map-1.png" width="672" /></p>
+<p><img src="/blog/post/2020-03-26-bermain-dengan-data-google-maps_files/figure-html/plot%20map-1.png" width="672" /></p>
 <p>Mau dengan animasi? Gunakan library <code>gganimate</code>.</p>
 <pre class="r"><code>library(gganimate)
 ggplot(data = google_maps_visited_2019) +
@@ -251,7 +251,7 @@ ggplot(data = google_maps_visited_2019) +
   ) +
   transition_time(start) +
   ease_aes(&quot;linear&quot;)</code></pre>
-<p><img src="/post/2020-03-26-bermain-dengan-data-google-maps_files/perjalanan.gif" /></p>
+<p><img src="../post/2020-03-26-bermain-dengan-data-google-maps_files/perjalanan.gif" /></p>
 <p>Sekian dulu.</p>
 
     </div>

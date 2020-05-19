@@ -28,7 +28,7 @@ Cara yang saya gunakan untuk mengatasi masalah ini adalah begini:
 3. Sebelum mulai bekerja dengan repositori ini, lakukan hal berikut:
 
 ```{bash}
-git remote update
+$ git remote update
 ```
 
 Ternyata sesimpel itu.

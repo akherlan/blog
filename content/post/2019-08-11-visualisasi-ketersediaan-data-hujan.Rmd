@@ -33,13 +33,13 @@ library(ggplot2)       # plot grafik
 
 ```{r memuat data, message=TRUE, warning=FALSE, paged.print=TRUE}
 # memuat data
-load(file = "~/R/hujan/prc/Raingauge/Precip.Rda")   # sesuaikan lokasi file
-Precip <- filter(Precip, !is.na(tgl))               # menghilangkan hari yang kosong (aneh, ya?)
+load(file = "~/R/repo/hujan/data/prc/Raingauge/Precip.Rda")   # sesuaikan lokasi file
+Precip <- Precip[!is.na(Precip$tgl),]               # menghilangkan hari yang kosong (aneh, ya?)
 Precip$NamaStasiun <- as.factor(Precip$NamaStasiun) # kategorisasi nama stasiun
 summary(Precip)
 ```
 
-Data ini sudah saya rapikan sebelumnya. Agar teman-teman bisa mengakses data ini dari RStudio di komputer masing-masing, silakan sesuaikan nilai `"~/R/hujan/prc/Raingauge/Precip.Rda"` dengan direktori yang tepat sesuai lokasi teman-teman menyimpannya.
+Data ini sudah saya rapikan sebelumnya. Agar teman-teman bisa mengakses data ini dari RStudio di komputer masing-masing, silakan sesuaikan nilai `"~/R/repo/hujan/data/precip.Rda"` dengan direktori yang tepat sesuai lokasi teman-teman menyimpannya.
 
 Simpan dalam hati? Oh, jangan.
 

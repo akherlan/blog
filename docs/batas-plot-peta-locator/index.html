@@ -81,7 +81,7 @@ library(&quot;dplyr&quot;)          # agar kita bisa melakukan piping (%&gt;%)</
 <p>Katakanlah kita ingin menampilkan peta wilayah Asia Tenggara dan sedikit bagian Oceania dan Australia.</p>
 <pre class="r"><code>map &lt;- ne_countries(continent = c(&quot;Asia&quot;, &quot;Oceania&quot;), returnclass = &quot;sf&quot;)
 plot(st_geometry(map))</code></pre>
-<p><img src="/post/2020-03-14-batas-plot-peta-dengan-locator_files/figure-html/data-1.png" width="672" /></p>
+<p><img src="/blog/post/2020-03-14-batas-plot-peta-dengan-locator_files/figure-html/data-1.png" width="672" /></p>
 <p>Tampak ada bagian dari Oceania yang terpisah di sebelah kiri (kelihatan titik hitam) hingga membuat peta jadi terpisah dan kosong di tengah. Lagipula kita hanya ingin menampilkan daratan yang berada di sekeliling Indonesia saja. Maka kita perlu memotong peta ini.</p>
 <p>Kita bisa menggunakan batas-batas koordinat untuk memotong peta seperti berikut (jalankan perintah baris per baris).</p>
 <pre class="r"><code># untuk (x, y) minimum &amp; maksimum
@@ -103,7 +103,7 @@ How to get coordinates as boundary of maps in <a href="https://twitter.com/hasht
 <pre class="r"><code>ggplot() +
   geom_sf(data = map) +
   coord_sf(xlim = c(min[1], max[1]), ylim = c(min[2], max[2]))</code></pre>
-<p><img src="/post/2020-03-14-batas-plot-peta-dengan-locator_files/figure-html/plot%20asia%20tenggara-1.png" width="672" /></p>
+<p><img src="/blog/post/2020-03-14-batas-plot-peta-dengan-locator_files/figure-html/plot%20asia%20tenggara-1.png" width="672" /></p>
 <p><code>[1]</code> adalah kolom yang mengandung nilai koordinat <code>x</code> sedangkan <code>[2]</code> adalah kolom nilai koordinat <code>y</code>.</p>
 <p>Bagian <code>coord_sf()</code> memberikan batasan atau limitasi pada peta yang akan diplot, tanpa menghilangkan data yang kita miliki. Kita bisa periksa extend data yang kita punya.</p>
 <pre class="r"><code>st_bbox(map)</code></pre>
@@ -138,7 +138,7 @@ How to get coordinates as boundary of maps in <a href="https://twitter.com/hasht
     panel.grid = element_line(size = 0.1, color = &quot;blue&quot;),
     plot.caption = element_text(size = 8, color = &quot;gray&quot;),
     axis.title = element_text(size = 9, color = &quot;blue&quot;))</code></pre>
-<p><img src="/post/2020-03-14-batas-plot-peta-dengan-locator_files/figure-html/plot%20akhir%20map-1.png" width="672" /></p>
+<p><img src="/blog/post/2020-03-14-batas-plot-peta-dengan-locator_files/figure-html/plot%20akhir%20map-1.png" width="672" /></p>
 <p>Selamat mencoba.</p>
 </div>
 <div class="footnotes">

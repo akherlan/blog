@@ -26,9 +26,9 @@ Untuk saat ini saya menggunakan cara yang pertama. Langkah yang saya lakukan ada
 ### 1. Setting odbc drivers di komputer linux
 
 ```{bash eval=FALSE, include=TRUE}
-sudo apt update 
-sudo apt install unixodbc unixodbc-dev 
-sudo apt install odbc-postgresql 
+$ sudo apt update 
+$ sudo apt install unixodbc unixodbc-dev 
+$ sudo apt install odbc-postgresql 
 ```
 
 ### 2. Periksa hasil instalasi kita
@@ -38,7 +38,7 @@ Beberapa berkas yang perlu kita tahu dan butuhkan untuk menunjang pengaturan dan
 Kita bisa gunakan perintah berikut di terminal:
 
 ```{bash eval=FALSE, include=TRUE}
-odbcinst -j
+$ odbcinst -j
 ```
 
 ![](../post/2020-04-16-postgresql-dan-rstudio_files/odbcinst_j.png)
@@ -46,8 +46,8 @@ odbcinst -j
 Atau dengan cara lain, misalnya:
 
 ```{bash eval=FALSE, include=TRUE}
-locate odbcinst.ini
-locate odbc.ini
+$ locate odbcinst.ini
+$ locate odbc.ini
 ```
 
 ![](../post/2020-04-16-postgresql-dan-rstudio_files/locate_odbc.png)
@@ -71,7 +71,7 @@ Sedangkan `~/.odbc.ini` hanya untuk user tertentu (sesuai lokasi home punya user
 Sunting berkas `.odbc.ini` milik user menggunakan text editor `nano` dengan perintah di terminal:
 
 ```{bash eval=FALSE, include=TRUE}
-nano ~/.odbc.ini
+$ nano ~/.odbc.ini
 ```
 
 Isikan detail seperti berikut:
