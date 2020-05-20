@@ -76,9 +76,7 @@ Sampai di sini, selamat menggunakan R di Android.
 
 ### Video demo
 
-PERINGATAN: 10 menit waktu Anda akan terbuang karena video ini membosankan apalagi kualitas rekaman dan cara merekam videonya buruk!
-
-<iframe width="100%" height="480" src="https://www.youtube.com/embed/OlZI1qmZGZs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/kDrc8-2K2DI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Tips
 
