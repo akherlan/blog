@@ -7,7 +7,7 @@ theme = "hugo-lithium"
 enableEmoji = true
 googleAnalytics = ""
 disqusShortname = "andikh"
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
 
 [permalinks]
     post = "/:slug/"

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>android on Engineer of words</title>
+    <link>https://akherlan.github.io/blog/tags/android/</link>
+    <description>Recent content in android on Engineer of words</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 19 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://akherlan.github.io/blog/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>R di Android dengan Termux</title>
+      <link>https://akherlan.github.io/blog/r-di-android-dengan-termux/</link>
+      <pubDate>Tue, 19 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://akherlan.github.io/blog/r-di-android-dengan-termux/</guid>
+      <description>Apakah mungkin menjalankan R di ponsel pintar Android? Bisa.
+Kita bisa menginstal dan menjalankan beberapa aplikasi yang tersedia di linux melalui termux. Salah satunya bahasa R.
+Termux merupakan terminal emulator di Android. Berjalan tanpa harus dalam mode root. Tersedia di PlayStore dan juga F-Droid.
+Karena saya kadang-kadang pakai R dan sedang belajar juga, jadi saya ingin instal R di Android.
+Paket manajemen termux Tidak semua paket di simpan dalam satu repositori termux, melainkan dibagi menjadi repo default (lebih stabil), dan selainnya ada repo untuk aplikasi root, unstable (dalam pengembangan), dan X11 (antarmuka grafis).</description>
+    </item>
+    
+  </channel>
+</rss>

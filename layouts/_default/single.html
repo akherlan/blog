@@ -17,24 +17,11 @@
     </span>
     {{ end }}
 
+    <!-- back to default content format -->
     <div class="article-content">
       {{ .Content }}
     </div>
-    
-    <!-- sometimes error -->
-    {{ if eq .Section "post" }}
-    <span class="article-meta">
-      {{ range $i := (slice "categories" "tags") }}
-      <!-- {{ with ($.Param $i) }} -->
-      {{ $i | title }}:
-      {{ range $k := . }}
-      <a href='{{ relURL (print "../" $i "/" $k | urlize) }}'>{{ $k }}</a>
-      {{ end }}<br>
-      <!-- {{ end }} -->
-      {{ end }}<br>
-    </span>
-    {{ end }}
-    <!-- end of sometimes error -->
+    <!-- end of back to default content format -->
 
   </article>
 

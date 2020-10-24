@@ -1,6 +1,8 @@
 .Rproj.user
 .Rhistory
+.Rprofile
 blogdown
 blog.Rproj
 _config
 data/*
+_backup/*
