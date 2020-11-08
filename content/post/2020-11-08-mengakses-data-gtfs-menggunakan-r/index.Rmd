@@ -1,0 +1,102 @@
+---
+title: Mengakses Data Angkot menggunakan R
+author: Andi
+date: '2020-11-08'
+slug: mengakses-data-gtfs-menggunakan-r
+categories:
+  - tutorial
+  - belajar
+tags:
+  - bogor
+  - transportasi
+---
+Kita akan bicara tentang data transportasi umum dengan standar data terbuka GTFS.
+
+GTFS (General Transit Feed Specification) merupakan standar pemaketan data terbuka mengenai pengoperasian transportasi massal yang mencakup perhentian/halte, jadwal, rute, instansi, dan lain sebagainya. 
+
+Mulai digunakan sejak 2005 dengan "G" sebagai akronim dari "Google". Sejak 2009 diganti menjadi "General" ([ref](https://atfutures.github.io/gtfs-router/articles/gtfsrouter.html#1-background-gtfs-and-other-r-packages)).
+
+Struktur lengkap data ini bisa kita pelajari dari [MobilityData](https://gtfs.mobilitydata.org/getting-started) maupun dari [Google Transit](https://developers.google.com/transit/gtfs/).
+
+Sebenarnya ada banyak data feed GTFS tersedia di internet, misalnya saja yang disediakan oleh [Open Mobility Data](https://transitfeeds.com/), atau oleh komunitas di [TransitLand](https://www.transit.land/feeds).
+
+Tapi untuk Indonesia sendiri, data GTFS ini masih jarang tersedia secara bebas. Mungkin tersedia, tetapi dengan format lain. Misalnya seperti ketika tempo hari saya pernah coba akses data rute Transjakarta dari Trafi. Kalau teman-teman punya informasi tambahan mohon kasih tau, yaa...
+
+## Mengakses Data Transit Feed GTFS dari R
+
+Terdapat beberapa paket pustaka (*library*) di R yang berkaitan dengan akses data maupun pengolahan data transit GTFS. Salah satu yang aktif dikembangkan misalnya `tidytransit`. Kita bisa mengakses data transit yang tersedia di trasitfeeds.com dari pustaka tersebut.
+
+```{r}
+# install.packages("tidytransit")
+library("tidytransit")
+
+feedlist[stringr::str_detect(feedlist$loc_t, "Indonesia"),c(2,4:6,10)]
+
+url <- feedlist[370,10]
+bogor_feed <- read_gtfs(url)
+summary(bogor_feed)
+```
+
+Dari data ini, ternyata ada 24 rute angkot yang beroperasi di Kota Bogor.
+
+Oh, ya... **DISCLAIMER**: saya belum melakukan validasi terhadap data angkor di Kota Bogor ini dengan kondisi lapangan saat artikel ini di tulis.
+
+Tapi, mari lihat saja bagaimana rupanya. 
+
+```{r}
+bogor_shp <- shapes_as_sf(bogor_feed$shapes)
+
+library("ggplot2")
+ggplot(data = bogor_shp) +
+  geom_sf(aes(color = shape_id))
+```
+
+Kemudian kita bisa lihat di mana letak pemberhentiannya (stops). Ini nggak tau yaa... Biasanya kan masih pakai cara teriak "kiri, Bang!" maka angkot akan berhenti.
+
+```{r}
+plot(bogor_feed)
+```
+
+Atau kita ingin mengamati lokasinya secara interaktif.
+
+```{r}
+library("tmap")
+library("sf")
+tmap_mode("view")
+qtm(bogor_stop)
+```
+
+
+Atau dengan `ggplot2`.
+
+```{r}
+library("dplyr")
+bogor_line <- inner_join(bogor_feed$stops, bogor_feed$stop_times, by = "stop_id") %>%
+  stops_as_sf() %>% 
+  select(trip_id, stop_id)
+bogor_line$trip_id <- stringr::str_replace(bogor_line$trip_id, "^(AK-.*)-.*-.*$", "\\1")
+bogor_line <- unique(bogor_line) %>% 
+  rename(route_id = trip_id)
+
+ggplot(data = bogor_shp) +
+  geom_sf(aes(color = shape_id)) +
+  geom_sf(
+    data = bogor_line, 
+    aes(color = route_id), 
+    size = .8, 
+    alpha = .5
+  ) +
+  labs(color = "Rute") +
+  ggtitle("Angkutan Kota Bogor") +
+  theme_void()
+```
+
+Data transit GTFS juga menyediakan slot untuk menyimpan data biaya perjalanan, pada data Angkot Kota Bogor ini misalnya seperti:
+
+```{r}
+bogor_feed$fare_attributes[,1:3]
+```
+
+Sebetulnya ada banyak lagi yang bisa kita lakukan dengan GTFS, tergantung dari kelengkapan datanya. Pustaka ini juga bisa digunakan untuk membantu kita melakukan analisis terhadap waktu tempuh, frekuensi stop, dan lain-lain. Juga untuk membangun data transit feed GTFS milik kita.
+
+Nanti lain kali mudah-mudahan bisa *sharing* lagi.

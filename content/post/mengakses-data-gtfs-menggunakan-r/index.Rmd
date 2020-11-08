@@ -1,0 +1,12 @@
+---
+title: Mengakses Data GTFS menggunakan R
+author: Andi
+date: '2020-11-08'
+slug: mengakses-data-gtfs-menggunakan-r
+categories:
+  - tutorial
+  - belajar
+tags:
+  - transportasi
+  - bogor
+---
